@@ -905,7 +905,7 @@ div#content h2 {
         }
 
         .logo img {
-            width: 100px;
+            width: 70px;
             padding: 10px;
         }
 
@@ -1369,416 +1369,6 @@ div#content h2 {
             </div>
         </main>
     </div>
-
-    <script>
-        const API_KEY = 'AIzaSyDr-_er5bFVbI9GOhsx4ZyhhBqb2RKJSE4';
-        const SEARCH_ENGINE_ID = '01f39be054d3b47bb';
-        const RESULTS_PER_PAGE = 10;
-
-        let currentQuery = '';
-        let currentPage = 1;
-        let totalResults = 0;
-        let currentSort = 'relevance';
-        let searchType = 'web';
-        let currentCategory = '';
-
-        // Category definitions with their search refinements
-        const categoryDefinitions = {
-            government: {
-                keywords: 'government official',
-                refinements: ['policy', 'regulations', 'services', 'agencies']
-            },
-            shopping: {
-                keywords: 'shopping store',
-                refinements: ['products', 'deals', 'reviews', 'prices']
-            },
-            military: {
-                keywords: 'military defense',
-                refinements: ['defense', 'army', 'navy', 'airforce']
-            },
-            movies: {
-                keywords: 'movies film cinema',
-                refinements: ['reviews', 'trailers', 'showtimes', 'cast']
-            },
-            research: {
-                keywords: 'research scientific',
-                refinements: ['papers', 'studies', 'publications', 'data']
-            },
-            news: {
-                keywords: 'news current events',
-                refinements: ['latest', 'breaking', 'headlines', 'updates']
-            },
-            sport: {
-                keywords: 'sports athletics',
-                refinements: ['scores', 'teams', 'players', 'standings']
-            },
-            finance: {
-                keywords: 'finance financial',
-                refinements: ['stocks', 'markets', 'investing', 'trading']
-            },
-            education: {
-                keywords: 'education learning',
-                refinements: ['courses', 'schools', 'universities', 'learning']
-            },
-            business: {
-                keywords: 'business company enterprise',
-                refinements: ['companies', 'industry', 'corporate', 'management']
-            },
-            music: {
-                keywords: 'music songs artists',
-                refinements: ['songs', 'artists', 'albums', 'concerts']
-            },
-            developer: {
-                keywords: 'programming developer coding',
-                refinements: ['code', 'software', 'github', 'documentation']
-            },
-            games: {
-                keywords: 'video games gaming',
-                refinements: ['pc', 'console', 'reviews', 'gameplay']
-            },
-            nature: {
-                keywords: 'nature environment wildlife',
-                refinements: ['wildlife', 'conservation', 'ecosystem', 'climate']
-            }
-        };
-
-        // Initialize category handlers
-        function initializeCategories() {
-            document.querySelectorAll('.category').forEach(category => {
-                category.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    handleCategoryClick(this);
-                });
-            });
-        }
-
-        // Handle category click
-        function handleCategoryClick(categoryElement) {
-            const categoryValue = categoryElement.dataset.category;
-
-            // Toggle active state
-            document.querySelectorAll('.category').forEach(c =>
-                c.classList.remove('active')
-            );
-
-            if (currentCategory === categoryValue) {
-                currentCategory = ''; // Deselect if clicking the same category
-            } else {
-                currentCategory = categoryValue;
-                categoryElement.classList.add('active');
-            }
-
-            // Update search with category
-            updateSearchWithCategory();
-        }
-
-        // Update search with category
-        function updateSearchWithCategory() {
-            const searchInput = document.getElementById('searchInput');
-            let searchTerms = searchInput.value.trim();
-
-            // Keep the original search terms without modifying the input
-            currentPage = 1;
-            performSearch();
-        }
-
-        // Modify the performSearch function to handle categories separately
-        async function performSearch(startIndex = 1) {
-            const searchInput = document.getElementById('searchInput');
-            const resultsDiv = document.getElementById('results');
-            let searchQuery = searchInput.value.trim();
-
-            if (!searchQuery && !currentCategory) {
-                alert('Please enter a search query or select a category');
-                return;
-            }
-
-            currentQuery = searchQuery;
-            resultsDiv.innerHTML = '<div class="loading">Searching...</script></div>';
-
-            try {
-                // Build the search query with category if selected
-                let finalQuery = searchQuery;
-                if (currentCategory &amp;&amp; categoryDefinitions[currentCategory]) {
-                    // Only add category keywords if there's a search query
-                    if (searchQuery) {
-                        finalQuery = `${searchQuery} ${categoryDefinitions[currentCategory].keywords}`;
-                    } else {
-                        finalQuery = categoryDefinitions[currentCategory].keywords;
-                    }
-                }
-
-                let searchUrl = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&amp;cx=${SEARCH_ENGINE_ID}&amp;q=${encodeURIComponent(finalQuery)}&amp;start=${startIndex}`;
-
-                // Add search type
-                if (searchType === 'image') {
-                    searchUrl += '&amp;searchType=image';
-                }
-
-                // Add sort
-                if (currentSort === 'date') {
-                    searchUrl += '&amp;sort=date';
-                }
-
-                // Add filters
-                searchUrl += getSearchFilters();
-
-                const response = await fetch(searchUrl);
-
-                if (!response.ok) {
-                    throw new Error('Search request failed');
-                }
-
-                const data = await response.json();
-                displayResults(data);
-                updatePagination(data);
-                displaySearchStats(data);
-                updateRefinements(data);
-                updateLabels(data);
-
-            } catch (error) {
-                resultsDiv.innerHTML = `Error: ${error.message}. Please try again later.`;
-            }
-        }
-
-        // Keep and modify this performSearch function
-        async function performSearch(startIndex = 1) {
-            const searchQuery = document.getElementById('searchInput').value;
-            const resultsDiv = document.getElementById('results');
-
-            if (!searchQuery &amp;&amp; !currentCategory) {
-                alert('Please enter a search query or select a category');
-                return;
-            }
-
-            currentQuery = searchQuery;
-            resultsDiv.innerHTML = '<div class="loading">Searching...</div>';
-
-            try {
-                let searchUrl = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&amp;cx=${SEARCH_ENGINE_ID}&amp;q=${encodeURIComponent(searchQuery)}&amp;start=${startIndex}`;
-
-                // Add search type
-                if (searchType === 'image') {
-                    searchUrl += '&amp;searchType=image';
-                }
-
-                // Add sort
-                if (currentSort === 'date') {
-                    searchUrl += '&amp;sort=date';
-                }
-
-                // Add filters
-                searchUrl += getSearchFilters();
-
-                // Add category refinements
-                if (currentCategory &amp;&amp; categoryDefinitions[currentCategory]) {
-                    const categoryKeywords = categoryDefinitions[currentCategory].keywords;
-                    if (!searchQuery.includes(categoryKeywords)) {
-                        searchUrl = searchUrl.replace('q=', `q=${encodeURIComponent(categoryKeywords + ' ')}`);
-                    }
-                }
-
-                const response = await fetch(searchUrl);
-
-                if (!response.ok) {
-                    throw new Error('Search request failed');
-                }
-
-                const data = await response.json();
-                displayResults(data);
-                updatePagination(data);
-                displaySearchStats(data);
-                updateRefinements(data);
-                updateLabels(data);
-
-            } catch (error) {
-                resultsDiv.innerHTML = `Error: ${error.message}. Please try again later.`;
-            }
-        }
-
-        // Update refinements based on category
-        function updateRefinements(data) {
-            const refinementsDiv = document.getElementById('refinements');
-            if (!refinementsDiv) return;
-
-            refinementsDiv.innerHTML = '';
-
-            if (currentCategory &amp;&amp; categoryDefinitions[currentCategory]) {
-                const refinements = categoryDefinitions[currentCategory].refinements;
-                refinements.forEach(refinement =&gt; {
-                    const button = document.createElement('button');
-                    button.className = 'refinement-button';
-                    button.textContent = refinement;
-                    button.onclick = () =&gt; addRefinementToSearch(refinement);
-                    refinementsDiv.appendChild(button);
-                });
-            }
-        }
-
-        // Add refinement to search
-        function addRefinementToSearch(refinement) {
-            const searchInput = document.getElementById('searchInput');
-            const currentSearch = searchInput.value;
-
-            if (!currentSearch.includes(refinement)) {
-                searchInput.value = `${currentSearch} ${refinement}`.trim();
-                currentPage = 1;
-                performSearch();
-            }
-        }
-
-        function switchSearchType(type) {
-            searchType = type;
-            document.getElementById('webSearch').classList.toggle('active', type === 'web');
-            document.getElementById('imageSearch').classList.toggle('active', type === 'image');
-            if (currentQuery) {
-                currentPage = 1;
-                performSearch();
-            }
-        }
-
-        function getSearchFilters() {
-            const timeRange = document.getElementById('timeRange').value;
-            const fileTypes = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
-                .map(cb =&gt; cb.value);
-
-            let filterString = '';
-
-            if (timeRange !== 'all') {
-                filterString += `&amp;dateRestrict=${timeRange}`;
-            }
-
-            if (fileTypes.length &gt; 0) {
-                filterString += `&amp;fileType=${fileTypes.join('|')}`;
-            }
-
-            return filterString;
-        }
-
-        function displayResults(data) {
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = '';
-
-            if (!data.items || data.items.length === 0) {
-                resultsDiv.innerHTML = 'No results found';
-                return;
-            }
-
-            if (searchType === 'image') {
-                data.items.forEach(item =&gt; {
-                    const resultItem = document.createElement('div');
-                    resultItem.className = 'result-item';
-
-                    resultItem.innerHTML = `
-                        <a href="/%24%7Bitem.link%7D" target="_blank">
-                            <img decoding="async" src="/%24%7Bitem.link%7D" alt="${item.title}" class="result-image">
-                            <div class="result-title">${item.title}</div>
-                            <div class="result-link">${item.displayLink}</div>
-                        </a>
-                    `;
-
-                    resultsDiv.appendChild(resultItem);
-                });
-            } else {
-                data.items.forEach(item =&gt; {
-                    const resultItem = document.createElement('div');
-                    resultItem.className = 'result-item text';
-
-                    resultItem.innerHTML = `
-                        <a href="/%24%7Bitem.link%7D" class="result-title" target="_blank">${item.title}</a>
-                        <div class="result-link">${item.displayLink}</div>
-                        <div class="result-snippet">${item.snippet}</div>
-                    `;
-
-                    resultsDiv.appendChild(resultItem);
-                });
-            }
-        }
-
-        function updateLabels(data) {
-            const labelsDiv = document.getElementById('labels');
-            labelsDiv.innerHTML = '';
-
-            if (data.context?.facets) {
-                data.context.facets.forEach(facet =&gt; {
-                    const label = document.createElement('span');
-                    label.className = 'label';
-                    label.textContent = facet[0];
-                    label.onclick = () =&gt; refinementSearch(facet[0]);
-                    labelsDiv.appendChild(label);
-                });
-            }
-        }
-
-        function refinementSearch(refinement) {
-            const searchInput = document.getElementById('searchInput');
-            searchInput.value = `${searchInput.value} ${refinement}`;
-            currentPage = 1;
-            performSearch();
-        }
-
-        function updatePagination(data) {
-            const prevButton = document.getElementById('prevButton');
-            const nextButton = document.getElementById('nextButton');
-            const currentPageSpan = document.getElementById('currentPage');
-
-            totalResults = parseInt(data.searchInformation.totalResults);
-            const maxPages = Math.ceil(Math.min(totalResults, 100) / RESULTS_PER_PAGE);
-
-            prevButton.disabled = currentPage === 1;
-            nextButton.disabled = currentPage &gt;= maxPages;
-
-            currentPageSpan.textContent = currentPage;
-        }
-
-        function displaySearchStats(data) {
-            const statsDiv = document.getElementById('searchStats');
-            const searchTime = parseFloat(data.searchInformation.searchTime).toFixed(2);
-            statsDiv.innerHTML = `About ${data.searchInformation.totalResults} results (${searchTime} seconds)`;
-        }
-
-        function previousPage() {
-            if (currentPage &gt; 1) {
-                currentPage--;
-                const startIndex = ((currentPage - 1) * RESULTS_PER_PAGE) + 1;
-                performSearch(startIndex);
-                window.scrollTo(0, 0);
-            }
-        }
-
-        function nextPage() {
-            const maxPages = Math.ceil(Math.min(totalResults, 100) / RESULTS_PER_PAGE);
-            if (currentPage  {
-            checkbox.addEventListener('change', function () {
-                currentPage = 1;
-                performSearch();
-            });
-        });
-
-        // Add event listener for Enter key
-        document.getElementById('searchInput').addEventListener('keypress', function (event) {
-            if (event.key === 'Enter') {
-                currentPage = 1;
-                performSearch();
-            }
-        });
-
-        // Initialize search type
-        function initializeSearchType() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const type = urlParams.get('type');
-            if (type === 'image') {
-                switchSearchType('image');
-            }
-        }
-
-        // Call initialization function when page loads
-        window.addEventListener('load', initializeSearchType);
-
-        // Initialize categories when the page loads
-        document.addEventListener('DOMContentLoaded', function () {
-            initializeCategories();
-        });
 
     		</div>
 				</div>
@@ -2384,7 +1974,7 @@ div#content h2 {
 							</div>
 		</section>
 						</div>
-			<!-- #page -->
+			</div><!-- #page -->
 <link rel="stylesheet" id="elementor-post-456-css" href="/wp-content/uploads/elementor/css/post-456.css" media="all">
 <link rel="stylesheet" id="elementskit-reset-button-for-pro-form-css-css" href="/wp-content/plugins/elementskit/modules/pro-form-reset-button/assets/css/elementskit-reset-button.css" media="all">
 <link rel="stylesheet" id="ekit-particles-css" href="/wp-content/plugins/elementskit/modules/particles/assets/css/particles.css" media="all">
@@ -2450,6 +2040,436 @@ var ekit_config = {"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"ae0a2d44c9"};
 			<script>
 			/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);
 			</script>
-				</body>
+			<script>var localize ={"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"ae58220815","i18n":{"added":"Added ","compare":"Compare","loading":"Loading..."},"eael_translate_text":{"required_text":"is a required field","invalid_text":"Invalid","billing_text":"Billing","shipping_text":"Shipping","fg_mfp_counter_text":"of"},"page_permalink":"\/","cart_redirectition":false,"cart_page_url":"","el_breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"ParticleThemesData":{"default":"{\"particles\":{\"number\":{\"value\":160,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":false,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":true,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":6,\"direction\":\"none\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"repulse\"},\"onclick\":{\"enable\":true,\"mode\":\"push\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","nasa":"{\"particles\":{\"number\":{\"value\":250,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":1,\"random\":true,\"anim\":{\"enable\":true,\"speed\":1,\"opacity_min\":0,\"sync\":false}},\"size\":{\"value\":3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":4,\"size_min\":0.3,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":1,\"direction\":\"none\",\"random\":true,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":600}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"bubble\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":250,\"size\":0,\"duration\":2,\"opacity\":0,\"speed\":3},\"repulse\":{\"distance\":400,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","bubble":"{\"particles\":{\"number\":{\"value\":15,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#1b1e34\"},\"shape\":{\"type\":\"polygon\",\"stroke\":{\"width\":0,\"color\":\"#000\"},\"polygon\":{\"nb_sides\":6},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":50,\"random\":false,\"anim\":{\"enable\":true,\"speed\":10,\"size_min\":40,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":200,\"color\":\"#ffffff\",\"opacity\":1,\"width\":2},\"move\":{\"enable\":true,\"speed\":8,\"direction\":\"none\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":false,\"mode\":\"grab\"},\"onclick\":{\"enable\":false,\"mode\":\"push\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","snow":"{\"particles\":{\"number\":{\"value\":450,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#fff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":true,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":5,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":500,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":2},\"move\":{\"enable\":true,\"speed\":6,\"direction\":\"bottom\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"bubble\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":0.5}},\"bubble\":{\"distance\":400,\"size\":4,\"duration\":0.3,\"opacity\":1,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","nyan_cat":"{\"particles\":{\"number\":{\"value\":150,\"density\":{\"enable\":false,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"star\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"http:\/\/wiki.lexisnexis.com\/academic\/images\/f\/fb\/Itunes_podcast_icon_300.jpg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":false,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":4,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":14,\"direction\":\"left\",\"random\":false,\"straight\":true,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":false,\"mode\":\"grab\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":200,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}"},"eael_login_nonce":"66e2539644","eael_register_nonce":"8059c2e03f","eael_lostpassword_nonce":"7f1e2387b9","eael_resetpassword_nonce":"248961fde9"}</script><script id="eael-inline-js">const API_KEY = 'AIzaSyDr-_er5bFVbI9GOhsx4ZyhhBqb2RKJSE4';
+        const SEARCH_ENGINE_ID = '01f39be054d3b47bb';
+        const RESULTS_PER_PAGE = 10;
+
+        let currentQuery = '';
+        let currentPage = 1;
+        let totalResults = 0;
+        let currentSort = 'relevance';
+        let searchType = 'web';
+        let currentCategory = '';
+
+        // Category definitions with their search refinements
+        const categoryDefinitions = {
+            government: {
+                keywords: 'government official',
+                refinements: ['policy', 'regulations', 'services', 'agencies']
+            },
+            shopping: {
+                keywords: 'shopping store',
+                refinements: ['products', 'deals', 'reviews', 'prices']
+            },
+            military: {
+                keywords: 'military defense',
+                refinements: ['defense', 'army', 'navy', 'airforce']
+            },
+            movies: {
+                keywords: 'movies film cinema',
+                refinements: ['reviews', 'trailers', 'showtimes', 'cast']
+            },
+            research: {
+                keywords: 'research scientific',
+                refinements: ['papers', 'studies', 'publications', 'data']
+            },
+            news: {
+                keywords: 'news current events',
+                refinements: ['latest', 'breaking', 'headlines', 'updates']
+            },
+            sport: {
+                keywords: 'sports athletics',
+                refinements: ['scores', 'teams', 'players', 'standings']
+            },
+            finance: {
+                keywords: 'finance financial',
+                refinements: ['stocks', 'markets', 'investing', 'trading']
+            },
+            education: {
+                keywords: 'education learning',
+                refinements: ['courses', 'schools', 'universities', 'learning']
+            },
+            business: {
+                keywords: 'business company enterprise',
+                refinements: ['companies', 'industry', 'corporate', 'management']
+            },
+            music: {
+                keywords: 'music songs artists',
+                refinements: ['songs', 'artists', 'albums', 'concerts']
+            },
+            developer: {
+                keywords: 'programming developer coding',
+                refinements: ['code', 'software', 'github', 'documentation']
+            },
+            games: {
+                keywords: 'video games gaming',
+                refinements: ['pc', 'console', 'reviews', 'gameplay']
+            },
+            nature: {
+                keywords: 'nature environment wildlife',
+                refinements: ['wildlife', 'conservation', 'ecosystem', 'climate']
+            }
+        };
+
+        // Initialize category handlers
+        function initializeCategories() {
+            document.querySelectorAll('.category').forEach(category => {
+                category.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    handleCategoryClick(this);
+                });
+            });
+        }
+
+        // Handle category click
+        function handleCategoryClick(categoryElement) {
+            const categoryValue = categoryElement.dataset.category;
+
+            // Toggle active state
+            document.querySelectorAll('.category').forEach(c =>
+                c.classList.remove('active')
+            );
+
+            if (currentCategory === categoryValue) {
+                currentCategory = ''; // Deselect if clicking the same category
+            } else {
+                currentCategory = categoryValue;
+                categoryElement.classList.add('active');
+            }
+
+            // Update search with category
+            updateSearchWithCategory();
+        }
+
+        // Update search with category
+        function updateSearchWithCategory() {
+            const searchInput = document.getElementById('searchInput');
+            let searchTerms = searchInput.value.trim();
+
+            // Keep the original search terms without modifying the input
+            currentPage = 1;
+            performSearch();
+        }
+
+        // Modify the performSearch function to handle categories separately
+        async function performSearch(startIndex = 1) {
+            const searchInput = document.getElementById('searchInput');
+            const resultsDiv = document.getElementById('results');
+            let searchQuery = searchInput.value.trim();
+
+            if (!searchQuery && !currentCategory) {
+                alert('Please enter a search query or select a category');
+                return;
+            }
+
+            currentQuery = searchQuery;
+            resultsDiv.innerHTML = '<div class="loading">Searching...';
+
+            try {
+                // Build the search query with category if selected
+                let finalQuery = searchQuery;
+                if (currentCategory && categoryDefinitions[currentCategory]) {
+                    // Only add category keywords if there's a search query
+                    if (searchQuery) {
+                        finalQuery = `${searchQuery} ${categoryDefinitions[currentCategory].keywords}`;
+                    } else {
+                        finalQuery = categoryDefinitions[currentCategory].keywords;
+                    }
+                }
+
+                let searchUrl = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${SEARCH_ENGINE_ID}&q=${encodeURIComponent(finalQuery)}&start=${startIndex}`;
+
+                // Add search type
+                if (searchType === 'image') {
+                    searchUrl += '&searchType=image';
+                }
+
+                // Add sort
+                if (currentSort === 'date') {
+                    searchUrl += '&sort=date';
+                }
+
+                // Add filters
+                searchUrl += getSearchFilters();
+
+                const response = await fetch(searchUrl);
+
+                if (!response.ok) {
+                    throw new Error('Search request failed');
+                }
+
+                const data = await response.json();
+                displayResults(data);
+                updatePagination(data);
+                displaySearchStats(data);
+                updateRefinements(data);
+                updateLabels(data);
+
+            } catch (error) {
+                resultsDiv.innerHTML = `Error: ${error.message}. Please try again later.`;
+            }
+        }
+
+        // Keep and modify this performSearch function
+        async function performSearch(startIndex = 1) {
+            const searchQuery = document.getElementById('searchInput').value;
+            const resultsDiv = document.getElementById('results');
+
+            if (!searchQuery && !currentCategory) {
+                alert('Please enter a search query or select a category');
+                return;
+            }
+
+            currentQuery = searchQuery;
+            resultsDiv.innerHTML = '<div class="loading">Searching...';
+
+            try {
+                let searchUrl = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${SEARCH_ENGINE_ID}&q=${encodeURIComponent(searchQuery)}&start=${startIndex}`;
+
+                // Add search type
+                if (searchType === 'image') {
+                    searchUrl += '&searchType=image';
+                }
+
+                // Add sort
+                if (currentSort === 'date') {
+                    searchUrl += '&sort=date';
+                }
+
+                // Add filters
+                searchUrl += getSearchFilters();
+
+                // Add category refinements
+                if (currentCategory && categoryDefinitions[currentCategory]) {
+                    const categoryKeywords = categoryDefinitions[currentCategory].keywords;
+                    if (!searchQuery.includes(categoryKeywords)) {
+                        searchUrl = searchUrl.replace('q=', `q=${encodeURIComponent(categoryKeywords + ' ')}`);
+                    }
+                }
+
+                const response = await fetch(searchUrl);
+
+                if (!response.ok) {
+                    throw new Error('Search request failed');
+                }
+
+                const data = await response.json();
+                displayResults(data);
+                updatePagination(data);
+                displaySearchStats(data);
+                updateRefinements(data);
+                updateLabels(data);
+
+            } catch (error) {
+                resultsDiv.innerHTML = `Error: ${error.message}. Please try again later.`;
+            }
+        }
+
+        // Update refinements based on category
+        function updateRefinements(data) {
+            const refinementsDiv = document.getElementById('refinements');
+            if (!refinementsDiv) return;
+
+            refinementsDiv.innerHTML = '';
+
+            if (currentCategory && categoryDefinitions[currentCategory]) {
+                const refinements = categoryDefinitions[currentCategory].refinements;
+                refinements.forEach(refinement => {
+                    const button = document.createElement('button');
+                    button.className = 'refinement-button';
+                    button.textContent = refinement;
+                    button.onclick = () => addRefinementToSearch(refinement);
+                    refinementsDiv.appendChild(button);
+                });
+            }
+        }
+
+        // Add refinement to search
+        function addRefinementToSearch(refinement) {
+            const searchInput = document.getElementById('searchInput');
+            const currentSearch = searchInput.value;
+
+            if (!currentSearch.includes(refinement)) {
+                searchInput.value = `${currentSearch} ${refinement}`.trim();
+                currentPage = 1;
+                performSearch();
+            }
+        }
+
+        function switchSearchType(type) {
+            searchType = type;
+            document.getElementById('webSearch').classList.toggle('active', type === 'web');
+            document.getElementById('imageSearch').classList.toggle('active', type === 'image');
+            if (currentQuery) {
+                currentPage = 1;
+                performSearch();
+            }
+        }
+
+        function getSearchFilters() {
+            const timeRange = document.getElementById('timeRange').value;
+            const fileTypes = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(cb => cb.value);
+
+            let filterString = '';
+
+            if (timeRange !== 'all') {
+                filterString += `&dateRestrict=${timeRange}`;
+            }
+
+            if (fileTypes.length > 0) {
+                filterString += `&fileType=${fileTypes.join('|')}`;
+            }
+
+            return filterString;
+        }
+
+        function displayResults(data) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            if (!data.items || data.items.length === 0) {
+                resultsDiv.innerHTML = 'No results found';
+                return;
+            }
+
+            if (searchType === 'image') {
+                data.items.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item';
+
+                    resultItem.innerHTML = `
+                        <a href="${item.link}" target="_blank">
+                            <img src="${item.link}" alt="${item.title}" class="result-image">
+                            <div class="result-title">${item.title}
+                            <div class="result-link">${item.displayLink}
+                        
+                    `;
+
+                    resultsDiv.appendChild(resultItem);
+                });
+            } else {
+                data.items.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item text';
+
+                    resultItem.innerHTML = `
+                        <a href="${item.link}" class="result-title" target="_blank">${item.title}
+                        <div class="result-link">${item.displayLink}
+                        <div class="result-snippet">${item.snippet}
+                    `;
+
+                    resultsDiv.appendChild(resultItem);
+                });
+            }
+        }
+
+        function updateLabels(data) {
+            const labelsDiv = document.getElementById('labels');
+            labelsDiv.innerHTML = '';
+
+            if (data.context?.facets) {
+                data.context.facets.forEach(facet => {
+                    const label = document.createElement('span');
+                    label.className = 'label';
+                    label.textContent = facet[0];
+                    label.onclick = () => refinementSearch(facet[0]);
+                    labelsDiv.appendChild(label);
+                });
+            }
+        }
+
+        function refinementSearch(refinement) {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = `${searchInput.value} ${refinement}`;
+            currentPage = 1;
+            performSearch();
+        }
+
+        function updatePagination(data) {
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const currentPageSpan = document.getElementById('currentPage');
+
+            totalResults = parseInt(data.searchInformation.totalResults);
+            const maxPages = Math.ceil(Math.min(totalResults, 100) / RESULTS_PER_PAGE);
+
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage >= maxPages;
+
+            currentPageSpan.textContent = currentPage;
+        }
+
+        function displaySearchStats(data) {
+            const statsDiv = document.getElementById('searchStats');
+            const searchTime = parseFloat(data.searchInformation.searchTime).toFixed(2);
+            statsDiv.innerHTML = `About ${data.searchInformation.totalResults} results (${searchTime} seconds)`;
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                const startIndex = ((currentPage - 1) * RESULTS_PER_PAGE) + 1;
+                performSearch(startIndex);
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function nextPage() {
+            const maxPages = Math.ceil(Math.min(totalResults, 100) / RESULTS_PER_PAGE);
+            if (currentPage < maxPages) {
+                currentPage++;
+                const startIndex = ((currentPage - 1) * RESULTS_PER_PAGE) + 1;
+                performSearch(startIndex);
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function changeSort(sortType) {
+            if (currentSort !== sortType) {
+                currentSort = sortType;
+                currentPage = 1;
+                performSearch();
+            }
+        }
+
+        // Filter change handlers
+        document.getElementById('timeRange').addEventListener('change', function () {
+            currentPage = 1;
+            performSearch();
+        });
+
+        // Add event listeners for checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                currentPage = 1;
+                performSearch();
+            });
+        });
+
+        // Add event listener for Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                currentPage = 1;
+                performSearch();
+            }
+        });
+
+        // Initialize search type
+        function initializeSearchType() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const type = urlParams.get('type');
+            if (type === 'image') {
+                switchSearchType('image');
+            }
+        }
+
+        // Call initialization function when page loads
+        window.addEventListener('load', initializeSearchType);
+
+        // Initialize categories when the page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeCategories();
+        });;</script>	</body>
 </html>
 <!-- Powered by Staatic (https://staatic.com/) -->
