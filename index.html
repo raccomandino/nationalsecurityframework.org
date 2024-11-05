@@ -893,19 +893,270 @@ div#content h2 {
 				<div data-elementor-type="wp-page" data-elementor-id="6967" class="elementor elementor-6967">
 							<div data-particle_enable="false" data-particle-mobile-disabled="false" class="elementor-element elementor-element-a5234d9 e-flex e-con-boxed e-con e-parent" data-id="a5234d9" data-element_type="container" data-settings='{"content_width":"boxed","_ob_use_container_extras":"no","_ob_column_hoveranimator":"no","_ob_glider_is_slider":"no","_ob_column_has_pseudo":"no"}' data-core-v316-plus="true">
 					<div class="e-con-inner">
+		<div data-particle_enable="false" data-particle-mobile-disabled="false" class="elementor-element elementor-element-25dd14c e-flex e-con-boxed e-con e-child" data-id="25dd14c" data-element_type="container" data-settings='{"content_width":"boxed","_ob_use_container_extras":"no","_ob_column_hoveranimator":"no","_ob_glider_is_slider":"no","_ob_column_has_pseudo":"no"}'>
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-82bc950 ob-has-background-overlay elementor-widget elementor-widget-image" data-id="82bc950" data-element_type="widget" data-settings='{"_ob_photomorph_use":"no","_ob_perspektive_use":"no","ekit_we_effect_on":"none","_ob_poopart_use":"yes","_ob_shadough_use":"no","_ob_allow_hoveranimator":"no","_ob_widget_stalker_use":"no"}' data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="690" height="690" src="/wp-content/uploads/2024/11/D0FB027E-2624-49F7-AFF9-91E9EDFCBFFB.png" class="attachment-large size-large wp-image-7212" alt="">															</div>
+				</div>
+				<div class="elementor-element elementor-element-b81d190 ob-has-background-overlay elementor-widget elementor-widget-html" data-id="b81d190" data-element_type="widget" data-settings='{"_ob_perspektive_use":"no","ekit_we_effect_on":"none","_ob_poopart_use":"yes","_ob_shadough_use":"no","_ob_allow_hoveranimator":"no","_ob_widget_stalker_use":"no"}' data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<h1 style="font-size:30px;text-align:center;">Score..</h1>
+<p style="text-align:center;">Find exactly what you're looking for with our Score Search Experience.</p>		</div>
+				</div>
+					</div>
+				</div>
 				<div class="elementor-element elementor-element-6e87d5a ob-has-background-overlay elementor-widget elementor-widget-html" data-id="6e87d5a" data-element_type="widget" data-settings='{"_ob_perspektive_use":"no","ekit_we_effect_on":"none","_ob_poopart_use":"yes","_ob_shadough_use":"no","_ob_allow_hoveranimator":"no","_ob_widget_stalker_use":"no"}' data-widget_type="html.default">
 				<div class="elementor-widget-container">
-			
+			<!-- Simple search bar for the main page -->
+<div class="simple-search-container">
+    <input type="text" id="mainSearchInput" placeholder="Search...">
+    <button onclick="handleMainSearch()" id="mainSearchButton">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+    </button>
+</div>
+
+<!-- Search Modal -->
+<div id="searchModal" class="search-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <button onclick="closeSearchModal()" class="close-modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div id="modalSearchContent">
+        </div>
+    </div>
+</div>
+</div>
+
+
+<style>
+/* Styles for the simple search bar */
+.simple-search-container {
+    max-width: 600px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.simple-search-container input {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.simple-search-container input:focus {
+    border-color: #000;
+}
+
+.simple-search-container button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #666;
+}
+
+.simple-search-container button:hover {
+    color: #000;
+}
+
+/* Modal styles */
+.search-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    margin: 5vh auto;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    overflow-y: auto;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+/* Close button styles with high specificity to override Elementor */
+.search-modal .modal-header .close-modal,
+.search-modal .modal-header button.close-modal {
+    position: absolute !important;
+    right: 16px !important;
+    top: 16px !important;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 8px !important;
+    background: none !important;
+    border: none !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #666 !important;
+    transition: all 0.2s ease !important;
+    outline: none !important;
+    margin: 0 !important;
+    min-height: unset !important;
+}
+
+.search-modal .modal-header .close-modal:hover,
+.search-modal .modal-header button.close-modal:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: #000 !important;
+}
+
+.modal-header {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.search-modal.active {
+    display: block;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 767px) {
+    .modal-content {
+        width: 100% !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        padding: 16px !important;
+    }
+
+    .search-modal .modal-header .close-modal,
+    .search-modal .modal-header button.close-modal {
+        top: 8px !important;
+        right: 8px !important;
+    }
+
+    .modal-header h3 {
+        margin-right: 40px !important;
+    }
+}
+</style>
+
+<script>
+    // Store references to DOM elements
+    const searchModal = document.getElementById('searchModal');
+    const mainSearchInput = document.getElementById('mainSearchInput');
+
+    // Function to handle main search
+    function handleMainSearch() {
+        const searchQuery = mainSearchInput.value.trim();
+        if (searchQuery) {
+            openSearchModal(searchQuery);
+        }
+    }
+
+    // Function to open modal and transfer search query
+    function openSearchModal(query) {
+        searchModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Transfer the search query to the modal's search input
+        const modalSearchInput = document.getElementById('searchInput');
+        if (modalSearchInput) {
+            modalSearchInput.value = query;
+            // Trigger the search
+            performSearch();
+        }
+    }
+
+    // Function to close modal
+    function closeSearchModal() {
+        searchModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Handle enter key in main search
+    mainSearchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            handleMainSearch();
+        }
+    });
+
+    // Close modal when clicking outside
+    searchModal.querySelector('.modal-overlay').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) {
+            closeSearchModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+            closeSearchModal();
+        }
+    });
+
+    // Prevent modal content clicks from closing the modal
+    searchModal.querySelector('.modal-content').addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+    // When the page loads, copy your existing search interface into the modal
+    document.addEventListener('DOMContentLoaded', () => {
+        const modalSearchContent = document.getElementById('modalSearchContent');
+        // Copy your existing search interface HTML here
+        modalSearchContent.innerHTML = `
+        <div class="search-container">
+            
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
             background-color: #f5f5f5;
         }
 
         .logo img {
-            width: 70px;
+            width: 100px;
             padding: 10px;
         }
 
@@ -958,10 +1209,20 @@ div#content h2 {
             font-size: 14px;
         }
 
-        .search-type.active {
-            color: #4285f4;
-            border-bottom-color: #4285f4;
-        }
+.search-type.active {
+    color: #212121;
+    border-bottom-color: #000000;
+}
+
+.search-type:focus {
+    background: #000;
+    color: #fff;
+}
+
+.search-type:hover {
+    background: #000;
+    color: #fff;
+}
 
         .search-box {
             width: 100%;
@@ -975,7 +1236,7 @@ div#content h2 {
         .search-button {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #4285f4;
+            background-color: #212121;
             color: white;
             border: none;
             border-radius: 4px;
@@ -1065,7 +1326,7 @@ div#content h2 {
         }
 
         .result-title {
-            color: #1a0dab;
+            color: #212121 !important;
             text-decoration: none;
             font-size: 18px;
             margin-bottom: 5px;
@@ -1073,7 +1334,7 @@ div#content h2 {
         }
 
         .result-link {
-            color: #006621;
+            color: #212121 !important;
             font-size: 12px;
         }
 
@@ -1162,7 +1423,7 @@ div#content h2 {
             cursor: pointer;
             transition: background-color 0.2s;
             text-decoration: none;
-            color: #333;
+            color: #333 !important;
         }
 
         .category:hover {
@@ -1186,10 +1447,25 @@ div#content h2 {
             text-align: center;
             font-weight: 500;
         }
-    </style>
 
-    <div class="logo"><img decoding="async" src="https://nationalsecurityframework.org/wp-content/uploads/2023/11/D0FB027E-2624-49F7-AFF9-91E9EDFCBFFB.png">
-    </div>
+        /* Mobile Layout */
+@media (max-width: 767px) {
+    .sidebar {
+        display: none;
+    }
+    .mobile-sidebar {
+    display: block !important;
+}
+}
+
+.mobile-sidebar {
+    display: none;
+}
+    
+
+    <div class="logo"><img decoding="async"
+            src="https://nationalsecurityframework.org/wp-content/uploads/2023/11/D0FB027E-2624-49F7-AFF9-91E9EDFCBFFB.png">
+    </script></div>
     <!--<div class="heading">
         <h1>Score..</h1>
         <p>Find exactly what you're looking for with our Score Search experience.</p>
@@ -1241,8 +1517,8 @@ div#content h2 {
         <main class="main-content">
             <div class="search-container">
                 <div class="search-header">
-                    <button class="search-type active" onclick="switchSearchType('web')" id="webSearch">Web</button>
-                    <button class="search-type" onclick="switchSearchType('image')" id="imageSearch">Images</button>
+                    <button class="search-type active" onclick="switchSearchType('web')" id="webSearch">List</button>
+                    <button class="search-type" onclick="switchSearchType('image')" id="imageSearch">Visual</button>
                 </div>
                 <div class="search-controls">
                     <input type="text" id="searchInput" class="search-box" placeholder="Enter your search query...">
@@ -1258,6 +1534,51 @@ div#content h2 {
                 <div class="labels" id="labels">
                     <!-- Labels will be dynamically added here -->
                 </div>
+            </div>
+
+            <div class="mobile-sidebar">
+                <aside class="sidebar-mobile">
+                    <div class="filter-section">
+                        <h3>Time Range</h3>
+                        <select class="date-filter" id="timeRange">
+                            <option value="all">Any time</option>
+                            <option value="d">Past 24 hours</option>
+                            <option value="w">Past week</option>
+                            <option value="m">Past month</option>
+                            <option value="y">Past year</option>
+                        </select>
+                    </div>
+                    <div class="filter-section">
+                        <h3>Content Type</h3>
+                        <div class="filter-option">
+                            <input type="checkbox" id="news" value="news">
+                            <label for="news">News</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="blogs" value="blogs">
+                            <label for="blogs">Blogs</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="videos" value="videos">
+                            <label for="videos">Videos</label>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <h3>File Type</h3>
+                        <div class="filter-option">
+                            <input type="checkbox" id="pdf" value="pdf">
+                            <label for="pdf">PDF</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="doc" value="doc">
+                            <label for="doc">Word</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="xls" value="xls">
+                            <label for="xls">Excel</label>
+                        </div>
+                    </div>
+                </aside>
             </div>
 
             <div class="categories" id="categories">
@@ -1369,8 +1690,14 @@ div#content h2 {
             </div>
         </main>
     </div>
+        </div>
+    `;
 
-    		</div>
+        // Re-initialize any necessary event listeners
+        initializeCategories();
+        // Add any other initialization needed for your search interface
+    });
+		</div>
 				</div>
 					</div>
 				</div>
@@ -1406,7 +1733,7 @@ div#content h2 {
 					<div class="elementor-background-overlay"></div>
 								<div class="elementor-element elementor-element-2e930acc ob-has-background-overlay elementor-widget elementor-widget-image" data-id="2e930acc" data-element_type="widget" data-settings='{"_ob_photomorph_use":"no","_ob_perspektive_use":"no","ekit_we_effect_on":"none","_ob_poopart_use":"yes","_ob_shadough_use":"no","_ob_allow_hoveranimator":"no","_ob_widget_stalker_use":"no"}' data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img decoding="async" width="94" height="94" src="/wp-content/uploads/2024/10/icons8-arrow-right-94.png" class="attachment-large size-large wp-image-7040" alt="">															</div>
+															<img loading="lazy" decoding="async" width="94" height="94" src="/wp-content/uploads/2024/10/icons8-arrow-right-94.png" class="attachment-large size-large wp-image-7040" alt="">															</div>
 				</div>
 					</div>
 		</div>
@@ -1427,7 +1754,7 @@ div#content h2 {
 					<div class="elementor-background-overlay"></div>
 								<div class="elementor-element elementor-element-6121dd8b ob-has-background-overlay elementor-widget elementor-widget-image" data-id="6121dd8b" data-element_type="widget" data-settings='{"_ob_photomorph_use":"no","_ob_perspektive_use":"no","ekit_we_effect_on":"none","_ob_poopart_use":"yes","_ob_shadough_use":"no","_ob_allow_hoveranimator":"no","_ob_widget_stalker_use":"no"}' data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img decoding="async" width="94" height="94" src="/wp-content/uploads/2024/10/icons8-arrow-right-94.png" class="attachment-large size-large wp-image-7040" alt="">															</div>
+															<img loading="lazy" decoding="async" width="94" height="94" src="/wp-content/uploads/2024/10/icons8-arrow-right-94.png" class="attachment-large size-large wp-image-7040" alt="">															</div>
 				</div>
 					</div>
 		</div>
@@ -1444,7 +1771,7 @@ div#content h2 {
 					<div class="elementor-background-overlay"></div>
 								<div class="elementor-element elementor-element-6999ba6d ob-has-background-overlay elementor-widget elementor-widget-image" data-id="6999ba6d" data-element_type="widget" data-settings='{"_ob_photomorph_use":"no","_ob_perspektive_use":"no","ekit_we_effect_on":"none","_ob_poopart_use":"yes","_ob_shadough_use":"no","_ob_allow_hoveranimator":"no","_ob_widget_stalker_use":"no"}' data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img decoding="async" width="94" height="94" src="/wp-content/uploads/2024/10/icons8-arrow-right-94.png" class="attachment-large size-large wp-image-7040" alt="">															</div>
+															<img loading="lazy" decoding="async" width="94" height="94" src="/wp-content/uploads/2024/10/icons8-arrow-right-94.png" class="attachment-large size-large wp-image-7040" alt="">															</div>
 				</div>
 					</div>
 		</div>
@@ -1465,7 +1792,7 @@ div#content h2 {
 					<div class="elementor-background-overlay"></div>
 								<div class="elementor-element elementor-element-ab874a3 ob-has-background-overlay elementor-widget elementor-widget-image" data-id="ab874a3" data-element_type="widget" data-settings='{"_ob_photomorph_use":"no","_ob_perspektive_use":"no","ekit_we_effect_on":"none","_ob_poopart_use":"yes","_ob_shadough_use":"no","_ob_allow_hoveranimator":"no","_ob_widget_stalker_use":"no"}' data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img decoding="async" width="94" height="94" src="/wp-content/uploads/2024/10/icons8-arrow-right-94.png" class="attachment-large size-large wp-image-7040" alt="">															</div>
+															<img loading="lazy" decoding="async" width="94" height="94" src="/wp-content/uploads/2024/10/icons8-arrow-right-94.png" class="attachment-large size-large wp-image-7040" alt="">															</div>
 				</div>
 					</div>
 		</div>
@@ -1482,7 +1809,7 @@ div#content h2 {
 					<div class="elementor-background-overlay"></div>
 								<div class="elementor-element elementor-element-dc7ef2c ob-has-background-overlay elementor-widget elementor-widget-image" data-id="dc7ef2c" data-element_type="widget" data-settings='{"_ob_photomorph_use":"no","_ob_perspektive_use":"no","ekit_we_effect_on":"none","_ob_poopart_use":"yes","_ob_shadough_use":"no","_ob_allow_hoveranimator":"no","_ob_widget_stalker_use":"no"}' data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img decoding="async" width="94" height="94" src="/wp-content/uploads/2024/10/icons8-arrow-right-94.png" class="attachment-large size-large wp-image-7040" alt="">															</div>
+															<img loading="lazy" decoding="async" width="94" height="94" src="/wp-content/uploads/2024/10/icons8-arrow-right-94.png" class="attachment-large size-large wp-image-7040" alt="">															</div>
 				</div>
 					</div>
 		</div>
@@ -1518,7 +1845,7 @@ div#content h2 {
 				<div class="elementor-widget-container">
 			<h2 class="elementor-heading-title elementor-size-default">Lorem ipsum dolor sit amet</h2>		</div>
 				</div>
-				<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-2803c589 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="2803c589" data-element_type="section" data-settings='{"background_background":"classic","animation":"fadeIn","animation_delay":100,"_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
+				<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-2803c589 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2803c589" data-element_type="section" data-settings='{"background_background":"classic","_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
 						<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-6dc599f2" data-id="6dc599f2" data-element_type="column" data-settings='{"_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
@@ -1542,7 +1869,7 @@ div#content h2 {
 				<div class="elementor-widget-container">
 			<h2 class="elementor-heading-title elementor-size-default">Lorem ipsum dolor sit amet</h2>		</div>
 				</div>
-				<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-2a0c50df elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="2a0c50df" data-element_type="section" data-settings='{"background_background":"classic","animation":"fadeIn","animation_delay":200,"_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
+				<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-2a0c50df elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2a0c50df" data-element_type="section" data-settings='{"background_background":"classic","_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
 						<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-3036dfb1" data-id="3036dfb1" data-element_type="column" data-settings='{"background_background":"classic","_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
@@ -1575,7 +1902,7 @@ div#content h2 {
 							<div class="elementor-container elementor-column-gap-wide">
 					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-7a7c21f" data-id="7a7c21f" data-element_type="column" data-settings='{"_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
-								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-70294e1 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="70294e1" data-element_type="section" data-settings='{"background_background":"classic","animation":"fadeIn","animation_delay":100,"_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
+								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-70294e1 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="70294e1" data-element_type="section" data-settings='{"background_background":"classic","_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
 						<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-87fb95b" data-id="87fb95b" data-element_type="column" data-settings='{"_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
@@ -1595,7 +1922,7 @@ div#content h2 {
 		</div>
 				<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-7076b5a" data-id="7076b5a" data-element_type="column" data-settings='{"_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
-								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-57fc4eb elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="57fc4eb" data-element_type="section" data-settings='{"background_background":"classic","animation":"fadeIn","animation_delay":200,"_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
+								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-57fc4eb elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="57fc4eb" data-element_type="section" data-settings='{"background_background":"classic","_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
 						<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-9294657" data-id="9294657" data-element_type="column" data-settings='{"background_background":"classic","_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
@@ -1628,7 +1955,7 @@ div#content h2 {
 							<div class="elementor-container elementor-column-gap-wide">
 					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4249345" data-id="4249345" data-element_type="column" data-settings='{"_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
-								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-a485e64 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="a485e64" data-element_type="section" data-settings='{"background_background":"classic","animation":"fadeIn","animation_delay":100,"_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
+								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-a485e64 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="a485e64" data-element_type="section" data-settings='{"background_background":"classic","_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
 						<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-38218fb" data-id="38218fb" data-element_type="column" data-settings='{"_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
@@ -1657,7 +1984,7 @@ div#content h2 {
 							<div class="elementor-container elementor-column-gap-wide">
 					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-072d725" data-id="072d725" data-element_type="column" data-settings='{"_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
-								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-7cd623f elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="7cd623f" data-element_type="section" data-settings='{"background_background":"classic","animation":"fadeIn","animation_delay":100,"_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
+								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-7cd623f elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7cd623f" data-element_type="section" data-settings='{"background_background":"classic","_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
 						<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-7898520" data-id="7898520" data-element_type="column" data-settings='{"_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
@@ -1686,7 +2013,7 @@ div#content h2 {
 							<div class="elementor-container elementor-column-gap-wide">
 					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-a75f7b6" data-id="a75f7b6" data-element_type="column" data-settings='{"_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
-								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-35c3354 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="35c3354" data-element_type="section" data-settings='{"background_background":"classic","animation":"fadeIn","animation_delay":100,"_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
+								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-35c3354 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="35c3354" data-element_type="section" data-settings='{"background_background":"classic","_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
 						<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-c5a364a" data-id="c5a364a" data-element_type="column" data-settings='{"_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
@@ -1715,7 +2042,7 @@ div#content h2 {
 							<div class="elementor-container elementor-column-gap-wide">
 					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-622c089" data-id="622c089" data-element_type="column" data-settings='{"_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
-								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-e2e364e elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="e2e364e" data-element_type="section" data-settings='{"background_background":"classic","animation":"fadeIn","animation_delay":100,"_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
+								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad ob-bb-inner elementor-section elementor-inner-section elementor-element elementor-element-e2e364e elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e2e364e" data-element_type="section" data-settings='{"background_background":"classic","_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
 						<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-00e0610" data-id="00e0610" data-element_type="column" data-settings='{"_ob_bbad_is_stalker":"no","_ob_teleporter_use":false,"_ob_column_hoveranimator":"no","_ob_column_has_pseudo":"no"}'>
 			<div class="elementor-widget-wrap elementor-element-populated">
@@ -1785,8 +2112,8 @@ div#content h2 {
 							</div>
 		</section>
 							</div>
-			</div> <!-- ast-container -->
-	</div><!-- #content -->
+			 <!-- ast-container -->
+	<!-- #content -->
 		<div data-elementor-type="footer" data-elementor-id="372" class="elementor elementor-372 elementor-location-footer">
 								<section data-particle_enable="false" data-particle-mobile-disabled="false" class="ob-is-breaking-bad elementor-section elementor-top-section elementor-element elementor-element-7a68b23a elementor-section-content-top elementor-hidden-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7a68b23a" data-element_type="section" data-settings='{"background_background":"classic","_ob_bbad_use_it":"yes","_ob_bbad_sssic_use":"no","_ob_glider_is_slider":"no"}'>
 						<div class="elementor-container elementor-column-gap-default">
@@ -1974,7 +2301,7 @@ div#content h2 {
 							</div>
 		</section>
 						</div>
-			</div><!-- #page -->
+			<!-- #page -->
 <link rel="stylesheet" id="elementor-post-456-css" href="/wp-content/uploads/elementor/css/post-456.css" media="all">
 <link rel="stylesheet" id="elementskit-reset-button-for-pro-form-css-css" href="/wp-content/plugins/elementskit/modules/pro-form-reset-button/assets/css/elementskit-reset-button.css" media="all">
 <link rel="stylesheet" id="ekit-particles-css" href="/wp-content/plugins/elementskit/modules/particles/assets/css/particles.css" media="all">
@@ -2000,7 +2327,7 @@ var astraAddon = {"sticky_active":"","svgIconClose":"<span class=\"ast-icon icon
 <script src="/wp-content/plugins/elementskit/modules/parallax/assets/js/anime.js" id="animejs-js"></script>
 <script defer src="/wp-content/plugins/elementskit/modules/parallax/assets/js/parallax-frontend-scripts.js" id="elementskit-parallax-frontend-defer-js"></script>
 <script id="eael-general-js-extra">
-var localize = {"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"ae58220815","i18n":{"added":"Added ","compare":"Compare","loading":"Loading..."},"eael_translate_text":{"required_text":"is a required field","invalid_text":"Invalid","billing_text":"Billing","shipping_text":"Shipping","fg_mfp_counter_text":"of"},"page_permalink":"\/","cart_redirectition":"","cart_page_url":"","el_breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"ParticleThemesData":{"default":"{\"particles\":{\"number\":{\"value\":160,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":false,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":true,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":6,\"direction\":\"none\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"repulse\"},\"onclick\":{\"enable\":true,\"mode\":\"push\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","nasa":"{\"particles\":{\"number\":{\"value\":250,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":1,\"random\":true,\"anim\":{\"enable\":true,\"speed\":1,\"opacity_min\":0,\"sync\":false}},\"size\":{\"value\":3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":4,\"size_min\":0.3,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":1,\"direction\":\"none\",\"random\":true,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":600}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"bubble\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":250,\"size\":0,\"duration\":2,\"opacity\":0,\"speed\":3},\"repulse\":{\"distance\":400,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","bubble":"{\"particles\":{\"number\":{\"value\":15,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#1b1e34\"},\"shape\":{\"type\":\"polygon\",\"stroke\":{\"width\":0,\"color\":\"#000\"},\"polygon\":{\"nb_sides\":6},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":50,\"random\":false,\"anim\":{\"enable\":true,\"speed\":10,\"size_min\":40,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":200,\"color\":\"#ffffff\",\"opacity\":1,\"width\":2},\"move\":{\"enable\":true,\"speed\":8,\"direction\":\"none\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":false,\"mode\":\"grab\"},\"onclick\":{\"enable\":false,\"mode\":\"push\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","snow":"{\"particles\":{\"number\":{\"value\":450,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#fff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":true,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":5,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":500,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":2},\"move\":{\"enable\":true,\"speed\":6,\"direction\":\"bottom\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"bubble\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":0.5}},\"bubble\":{\"distance\":400,\"size\":4,\"duration\":0.3,\"opacity\":1,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","nyan_cat":"{\"particles\":{\"number\":{\"value\":150,\"density\":{\"enable\":false,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"star\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"http:\/\/wiki.lexisnexis.com\/academic\/images\/f\/fb\/Itunes_podcast_icon_300.jpg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":false,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":4,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":14,\"direction\":\"left\",\"random\":false,\"straight\":true,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":false,\"mode\":\"grab\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":200,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}"},"eael_login_nonce":"66e2539644","eael_register_nonce":"8059c2e03f","eael_lostpassword_nonce":"7f1e2387b9","eael_resetpassword_nonce":"248961fde9"};
+var localize = {"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"9417ad96f2","i18n":{"added":"Added ","compare":"Compare","loading":"Loading..."},"eael_translate_text":{"required_text":"is a required field","invalid_text":"Invalid","billing_text":"Billing","shipping_text":"Shipping","fg_mfp_counter_text":"of"},"page_permalink":"\/","cart_redirectition":"","cart_page_url":"","el_breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"ParticleThemesData":{"default":"{\"particles\":{\"number\":{\"value\":160,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":false,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":true,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":6,\"direction\":\"none\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"repulse\"},\"onclick\":{\"enable\":true,\"mode\":\"push\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","nasa":"{\"particles\":{\"number\":{\"value\":250,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":1,\"random\":true,\"anim\":{\"enable\":true,\"speed\":1,\"opacity_min\":0,\"sync\":false}},\"size\":{\"value\":3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":4,\"size_min\":0.3,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":1,\"direction\":\"none\",\"random\":true,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":600}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"bubble\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":250,\"size\":0,\"duration\":2,\"opacity\":0,\"speed\":3},\"repulse\":{\"distance\":400,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","bubble":"{\"particles\":{\"number\":{\"value\":15,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#1b1e34\"},\"shape\":{\"type\":\"polygon\",\"stroke\":{\"width\":0,\"color\":\"#000\"},\"polygon\":{\"nb_sides\":6},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":50,\"random\":false,\"anim\":{\"enable\":true,\"speed\":10,\"size_min\":40,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":200,\"color\":\"#ffffff\",\"opacity\":1,\"width\":2},\"move\":{\"enable\":true,\"speed\":8,\"direction\":\"none\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":false,\"mode\":\"grab\"},\"onclick\":{\"enable\":false,\"mode\":\"push\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","snow":"{\"particles\":{\"number\":{\"value\":450,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#fff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":true,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":5,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":500,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":2},\"move\":{\"enable\":true,\"speed\":6,\"direction\":\"bottom\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"bubble\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":0.5}},\"bubble\":{\"distance\":400,\"size\":4,\"duration\":0.3,\"opacity\":1,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","nyan_cat":"{\"particles\":{\"number\":{\"value\":150,\"density\":{\"enable\":false,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"star\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"http:\/\/wiki.lexisnexis.com\/academic\/images\/f\/fb\/Itunes_podcast_icon_300.jpg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":false,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":4,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":14,\"direction\":\"left\",\"random\":false,\"straight\":true,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":false,\"mode\":\"grab\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":200,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}"},"eael_login_nonce":"f40f8da906","eael_register_nonce":"0dd032a0e3","eael_lostpassword_nonce":"ae86f5f2c7","eael_resetpassword_nonce":"50bc8fe1e9"};
 </script>
 <script src="/wp-content/plugins/essential-addons-for-elementor-lite/assets/front-end/js/view/general.min.js" id="eael-general-js"></script>
 <script src="/wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js" id="elementor-pro-webpack-runtime-js"></script>
@@ -2012,7 +2339,7 @@ var localize = {"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"ae58220815","i18
 wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 </script>
 <script id="elementor-pro-frontend-js-before">
-var ElementorProFrontendConfig = {"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"3a72136666","urls":{"assets":"\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"\/wp-json\/"},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"en_US","app_id":""},"lottie":{"defaultAnimationUrl":"\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
+var ElementorProFrontendConfig = {"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"77683c1e7f","urls":{"assets":"\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"\/wp-json\/"},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"en_US","app_id":""},"lottie":{"defaultAnimationUrl":"\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
 </script>
 <script src="/wp-content/plugins/elementor-pro/assets/js/frontend.min.js" id="elementor-pro-frontend-js"></script>
 <script src="/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js" id="elementor-waypoints-js"></script>
@@ -2027,7 +2354,7 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
 <script src="/wp-content/plugins/elementor-pro/assets/js/elements-handlers.min.js" id="pro-elements-handlers-js"></script>
 <script src="/wp-content/plugins/elementskit-lite/widgets/init/assets/js/animate-circle.min.js" id="animate-circle-js"></script>
 <script id="elementskit-elementor-js-extra">
-var ekit_config = {"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"ae0a2d44c9"};
+var ekit_config = {"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"4da9c446af"};
 </script>
 <script src="/wp-content/plugins/elementskit-lite/widgets/init/assets/js/elementor.js" id="elementskit-elementor-js"></script>
 <script src="/wp-content/plugins/elementskit/widgets/init/assets/js/elementor.js" id="elementskit-elementor-pro-js"></script>
@@ -2040,7 +2367,7 @@ var ekit_config = {"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"ae0a2d44c9"};
 			<script>
 			/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);
 			</script>
-			<script>var localize ={"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"ae58220815","i18n":{"added":"Added ","compare":"Compare","loading":"Loading..."},"eael_translate_text":{"required_text":"is a required field","invalid_text":"Invalid","billing_text":"Billing","shipping_text":"Shipping","fg_mfp_counter_text":"of"},"page_permalink":"\/","cart_redirectition":false,"cart_page_url":"","el_breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"ParticleThemesData":{"default":"{\"particles\":{\"number\":{\"value\":160,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":false,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":true,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":6,\"direction\":\"none\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"repulse\"},\"onclick\":{\"enable\":true,\"mode\":\"push\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","nasa":"{\"particles\":{\"number\":{\"value\":250,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":1,\"random\":true,\"anim\":{\"enable\":true,\"speed\":1,\"opacity_min\":0,\"sync\":false}},\"size\":{\"value\":3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":4,\"size_min\":0.3,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":1,\"direction\":\"none\",\"random\":true,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":600}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"bubble\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":250,\"size\":0,\"duration\":2,\"opacity\":0,\"speed\":3},\"repulse\":{\"distance\":400,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","bubble":"{\"particles\":{\"number\":{\"value\":15,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#1b1e34\"},\"shape\":{\"type\":\"polygon\",\"stroke\":{\"width\":0,\"color\":\"#000\"},\"polygon\":{\"nb_sides\":6},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":50,\"random\":false,\"anim\":{\"enable\":true,\"speed\":10,\"size_min\":40,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":200,\"color\":\"#ffffff\",\"opacity\":1,\"width\":2},\"move\":{\"enable\":true,\"speed\":8,\"direction\":\"none\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":false,\"mode\":\"grab\"},\"onclick\":{\"enable\":false,\"mode\":\"push\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","snow":"{\"particles\":{\"number\":{\"value\":450,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#fff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":true,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":5,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":500,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":2},\"move\":{\"enable\":true,\"speed\":6,\"direction\":\"bottom\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"bubble\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":0.5}},\"bubble\":{\"distance\":400,\"size\":4,\"duration\":0.3,\"opacity\":1,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","nyan_cat":"{\"particles\":{\"number\":{\"value\":150,\"density\":{\"enable\":false,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"star\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"http:\/\/wiki.lexisnexis.com\/academic\/images\/f\/fb\/Itunes_podcast_icon_300.jpg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":false,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":4,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":14,\"direction\":\"left\",\"random\":false,\"straight\":true,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":false,\"mode\":\"grab\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":200,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}"},"eael_login_nonce":"66e2539644","eael_register_nonce":"8059c2e03f","eael_lostpassword_nonce":"7f1e2387b9","eael_resetpassword_nonce":"248961fde9"}</script><script id="eael-inline-js">const API_KEY = 'AIzaSyDr-_er5bFVbI9GOhsx4ZyhhBqb2RKJSE4';
+			<script>var localize ={"ajaxurl":"\/wp-admin\/admin-ajax.php","nonce":"9417ad96f2","i18n":{"added":"Added ","compare":"Compare","loading":"Loading..."},"eael_translate_text":{"required_text":"is a required field","invalid_text":"Invalid","billing_text":"Billing","shipping_text":"Shipping","fg_mfp_counter_text":"of"},"page_permalink":"\/","cart_redirectition":false,"cart_page_url":"","el_breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"ParticleThemesData":{"default":"{\"particles\":{\"number\":{\"value\":160,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":false,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":true,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":6,\"direction\":\"none\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"repulse\"},\"onclick\":{\"enable\":true,\"mode\":\"push\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","nasa":"{\"particles\":{\"number\":{\"value\":250,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":1,\"random\":true,\"anim\":{\"enable\":true,\"speed\":1,\"opacity_min\":0,\"sync\":false}},\"size\":{\"value\":3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":4,\"size_min\":0.3,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":1,\"direction\":\"none\",\"random\":true,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":600}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"bubble\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":250,\"size\":0,\"duration\":2,\"opacity\":0,\"speed\":3},\"repulse\":{\"distance\":400,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","bubble":"{\"particles\":{\"number\":{\"value\":15,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#1b1e34\"},\"shape\":{\"type\":\"polygon\",\"stroke\":{\"width\":0,\"color\":\"#000\"},\"polygon\":{\"nb_sides\":6},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.3,\"random\":true,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":50,\"random\":false,\"anim\":{\"enable\":true,\"speed\":10,\"size_min\":40,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":200,\"color\":\"#ffffff\",\"opacity\":1,\"width\":2},\"move\":{\"enable\":true,\"speed\":8,\"direction\":\"none\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":false,\"mode\":\"grab\"},\"onclick\":{\"enable\":false,\"mode\":\"push\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","snow":"{\"particles\":{\"number\":{\"value\":450,\"density\":{\"enable\":true,\"value_area\":800}},\"color\":{\"value\":\"#fff\"},\"shape\":{\"type\":\"circle\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"img\/github.svg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":true,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":5,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":500,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":2},\"move\":{\"enable\":true,\"speed\":6,\"direction\":\"bottom\",\"random\":false,\"straight\":false,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":true,\"mode\":\"bubble\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":400,\"line_linked\":{\"opacity\":0.5}},\"bubble\":{\"distance\":400,\"size\":4,\"duration\":0.3,\"opacity\":1,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}","nyan_cat":"{\"particles\":{\"number\":{\"value\":150,\"density\":{\"enable\":false,\"value_area\":800}},\"color\":{\"value\":\"#ffffff\"},\"shape\":{\"type\":\"star\",\"stroke\":{\"width\":0,\"color\":\"#000000\"},\"polygon\":{\"nb_sides\":5},\"image\":{\"src\":\"http:\/\/wiki.lexisnexis.com\/academic\/images\/f\/fb\/Itunes_podcast_icon_300.jpg\",\"width\":100,\"height\":100}},\"opacity\":{\"value\":0.5,\"random\":false,\"anim\":{\"enable\":false,\"speed\":1,\"opacity_min\":0.1,\"sync\":false}},\"size\":{\"value\":4,\"random\":true,\"anim\":{\"enable\":false,\"speed\":40,\"size_min\":0.1,\"sync\":false}},\"line_linked\":{\"enable\":false,\"distance\":150,\"color\":\"#ffffff\",\"opacity\":0.4,\"width\":1},\"move\":{\"enable\":true,\"speed\":14,\"direction\":\"left\",\"random\":false,\"straight\":true,\"out_mode\":\"out\",\"bounce\":false,\"attract\":{\"enable\":false,\"rotateX\":600,\"rotateY\":1200}}},\"interactivity\":{\"detect_on\":\"canvas\",\"events\":{\"onhover\":{\"enable\":false,\"mode\":\"grab\"},\"onclick\":{\"enable\":true,\"mode\":\"repulse\"},\"resize\":true},\"modes\":{\"grab\":{\"distance\":200,\"line_linked\":{\"opacity\":1}},\"bubble\":{\"distance\":400,\"size\":40,\"duration\":2,\"opacity\":8,\"speed\":3},\"repulse\":{\"distance\":200,\"duration\":0.4},\"push\":{\"particles_nb\":4},\"remove\":{\"particles_nb\":2}}},\"retina_detect\":true}"},"eael_login_nonce":"f40f8da906","eael_register_nonce":"0dd032a0e3","eael_lostpassword_nonce":"ae86f5f2c7","eael_resetpassword_nonce":"50bc8fe1e9"}</script><script id="eael-inline-js">const API_KEY = 'AIzaSyDr-_er5bFVbI9GOhsx4ZyhhBqb2RKJSE4';
         const SEARCH_ENGINE_ID = '01f39be054d3b47bb';
         const RESULTS_PER_PAGE = 10;
 
