@@ -58,7 +58,7 @@ const MobileMenu = ({ mobileMenuHandle }) => {
 
         <ul className="mobile-menu-list mb-40">
           <li>
-            <a href="" target="_blank" rel="noreferrer">
+            <a href="https://nationalsecurityframework.org/polarpound/public/assets/White%20Paper%20for%20Lighter%20Ledger%20Pound%20(LLP)%20(Polar%20Pound)%20Presale%20&%20Launch%20(February%202025).pdf" target="_blank" rel="noreferrer">
               Whitepaper
             </a>
           </li>
