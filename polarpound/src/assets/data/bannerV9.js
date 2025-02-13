@@ -76,7 +76,7 @@ export const TokenDistribution = [
 
 export const BuySteps = [
   {
-    title: "Connect Your Wallet",
+    title: "Connect Wallet",
     des: "Press the connect button and choose one of the many supported wallets to connect to the website.",
     icon: SIcon1,
   },
@@ -86,7 +86,7 @@ export const BuySteps = [
     icon: SIcon2,
   },
   {
-    title: "Claim Your LLP Tokens",
+    title: "Claim LLP Tokens",
     des: "Click the claim button to receive your LLP tokens directly into your connected wallet",
     icon: SIcon3,
   },

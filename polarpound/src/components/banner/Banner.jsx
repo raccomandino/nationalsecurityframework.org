@@ -3,6 +3,7 @@ import { useWallet } from "@tronweb3/tronwallet-adapter-react-hooks";
 import { WalletActionButton } from "@tronweb3/tronwallet-adapter-react-ui";
 import { toast } from "react-toastify";
 import axios from "axios";
+import Image from "next/image";
 import BannerWrapper from "./Banner.style";
 import DocumentIcon from "../../assets/images/icons/document-text.svg";
 import PresaleLiveTextIcon from "../../assets/images/icons/presale-live-text.svg";
@@ -125,7 +126,7 @@ const Banner = () => {
           "https://apilist.tronscanapi.com/api/token/price?token=trx"
         );
         const data = await response.json();
-        console.log("debug fetch TRX::", data);
+        // console.log("debug fetch TRX::", data);
         if (data.price_in_usd) {
           setTrxPrice(parseFloat(data.price_in_usd));
         }
@@ -140,16 +141,16 @@ const Banner = () => {
     async function fetchCurrencyPrice() {
       try {
         const gbpResponse = await axios.get(
-          `https://v6.exchangerate-api.com/v6/${EXCHANGERATE_API_KEY}/pair/USD/GBP`,
+          `https://v6.exchangerate-api.com/v6/${EXCHANGERATE_API_KEY}/pair/USD/GBP`
         );
         console.log("debug eur res::", gbpResponse);
-        if(gbpResponse.data) {
+        if (gbpResponse.data) {
           setGbp2Usd(gbpResponse.data.conversion_rate);
         }
         const eurResponse = await axios.get(
-          `https://v6.exchangerate-api.com/v6/${EXCHANGERATE_API_KEY}/pair/USD/EUR`,
+          `https://v6.exchangerate-api.com/v6/${EXCHANGERATE_API_KEY}/pair/USD/EUR`
         );
-        if(eurResponse.data) {
+        if (eurResponse.data) {
           setEur2Usd(eurResponse.data.conversion_rate);
         }
         // const eurData = await eurResponse.json();
@@ -523,45 +524,61 @@ const Banner = () => {
                 </div>
                 <div className="about-item mt-15">
                   <h6 className="w-24">Token Contract Address</h6>
-                  <input type="text" value={SALE_TOKEN} disabled />
-                  <CopyToClipboard text={SALE_TOKEN} onCopy={onCopyCA}>
-                    <img
-                      src={copiedCA ? CopiedLogo.src : CopyLogo.src}
-                      alt="copyLogo"
-                      className="copy2board"
-                      width={23}
-                    />
-                  </CopyToClipboard>
+                  <div className="copy-box">
+                    <input type="text" value={SALE_TOKEN} disabled />
+                    <CopyToClipboard text={SALE_TOKEN} onCopy={onCopyCA}>
+                      <img
+                        src={copiedCA ? CopiedLogo.src : CopyLogo.src}
+                        alt="copyLogo"
+                        className="copy2board"
+                        width={23}
+                      />
+                    </CopyToClipboard>
+                  </div>
                 </div>
                 <div className="about-item mt-15">
                   <h6 className="w-24">Presale Contract Address</h6>
-                  <input type="text" value={TRON_PRESALE_ADDR} disabled />
-                  <CopyToClipboard text={TRON_PRESALE_ADDR} onCopy={onCopySA}>
-                    <img
-                      src={copiedSA ? CopiedLogo.src : CopyLogo.src}
-                      alt="copyLogo"
-                      className="copy2board"
-                      width={23}
-                    />
-                  </CopyToClipboard>
+                  <div className="copy-box">
+                    <input type="text" value={TRON_PRESALE_ADDR} disabled />
+                    <CopyToClipboard text={TRON_PRESALE_ADDR} onCopy={onCopySA}>
+                      <img
+                        src={copiedSA ? CopiedLogo.src : CopyLogo.src}
+                        alt="copyLogo"
+                        className="copy2board"
+                        width={23}
+                      />
+                    </CopyToClipboard>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-6 d-flex justify-content-center">
-              <img
+              {/* <img
                 src={BSureBrand.src}
                 style={{ width: "512px", height: "512px" }}
-              ></img>
+              ></img> */}
+              <Image
+              src= "/images/bsure-brand.png"
+              alt="llp brand"
+              width={512}
+              height={512}
+              />
             </div>
           </div>
         </section>
         <section id="power" style={{ marginTop: "36px" }}>
           <div className="row align-items-center">
             <div className="col-lg-6 d-flex justify-content-center">
-              <img
+              {/* <img
                 src={Brand.src}
                 style={{ width: "480px", height: "480px" }}
-              ></img>
+              ></img> */}
+                            <Image
+              src= "/images/brand.png"
+              alt="tron brand"
+              width={480}
+              height={480}
+              />
             </div>
             <div className="col-lg-6">
               <div className="gittu-banner-left">

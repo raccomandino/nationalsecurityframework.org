@@ -75,6 +75,7 @@ const BannerWrapper = styled.section`
   .launchpad-progress-text {
     width: 40%;
     display: block;
+    color: black;
   }
   .launchpad-progress-bar {
     width: 60%;
@@ -435,10 +436,15 @@ const BannerWrapper = styled.section`
   }
 
   .about-item {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: space-between;
     gap: 30px;
+
+    .copy-box  {
+      display: flex;
+      gap: 20px;
+    }
 
     h6 {
       font-weight: 500;
@@ -446,7 +452,6 @@ const BannerWrapper = styled.section`
       line-height: 30px;
       text-transform: uppercase;
       color: ${({ theme }) => theme.colors.black};
-      width: 100px;
     }
 
     input {
