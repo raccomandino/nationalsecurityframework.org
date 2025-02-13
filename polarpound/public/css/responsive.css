@@ -1,0 +1,643 @@
+@media (max-width: 1280px){
+    .container {
+        max-width: 1200px;
+    }
+    .presale-title {
+        font-size: 40px;
+        line-height: 100%;
+    }
+    .step-title {
+        font-size: 32px;
+    }
+    .back-button, .method-button {
+        padding: 14px 24px;
+    }
+    .method-button span {
+        margin-right: 8px;
+    }
+}
+@media (max-width: 1199.98px){
+    #hero {
+        min-height: 800px;
+    }
+    .container {
+        max-width: 1100px;
+    }
+    .lingsol-navigation-outer {
+        padding: 12px 12px 12px 16px;
+    }
+    .lingonsol-nav-button {
+        font-size: 12px;
+        line-height: 15px;
+        padding: 14px 24px;    
+    }
+    .lingsol-navigation-content {
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .nav-menu-button {
+        padding: 10px;
+    }
+    .hero-title {
+        font-size: 96px;
+    }
+    .img-hero .bg-img {
+        border-radius: 96px;
+    }
+    .text-desc {
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .lingonsol-primary-button, .lingonsol-secondary-button {
+        padding: 14px 24px;
+        font-size: 16px;
+        line-height: 24px;
+        box-shadow: 2px 6px 0px 0px #3F14A4;
+    }
+    .earn-card {
+        padding: 24px;
+    }
+    .earn-box-title {
+        font-size: 40px;
+    }
+    .earn-box-subtitle {
+        font-size: 28px;
+    }
+    .section-title {
+        font-size: 48px;
+    }
+    .about-box {
+        padding: 0px 0px 100px;
+    }
+    .lingonsol-accordion .accordion-button {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .lingonsol-icon {
+        padding: 6px;
+    }
+    .lingsol-icon span {
+        width: 20px;
+    }
+    .lingonsol-accordion .accordion-button {
+        padding: 12px 16px;
+    }
+    .lingonsol-accordion .accordion-item,
+    .lingonsol-accordion .accordion-item:first-of-type,
+    .lingonsol-accordion .accordion-item:first-of-type .accordion-button,
+    .lingonsol-accordion .accordion-item:last-of-type .accordion-button.collapsed {
+        border-radius: 16px !important;
+    }
+    .roadmap-footstep-1 {
+        right: 0;
+    }
+    .calculator-card-1, .calculator-card-2 {
+        padding: 24px;
+    }
+    .label-earned {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .input-calculator {
+        padding: 10px 10px 10px 40px;
+    }
+    .input-calculator-outer:after, .input-calculator {
+        font-size: 22px;
+        line-height: 33px;
+    }
+    .lingnomics-card-title {
+        font-size: 24px;
+    }
+    .special-result {
+        font-size: 30px;
+    }
+    .lingnomics-box {
+        padding: 8px 24px 32px;
+    }
+    .cta-title {
+        font-size: 64px;
+    }
+    .cta-desc {
+        font-size: 22px;
+        line-height: 33px;
+    }
+    .footer-copy, .footer-email {
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .footer-email > div > span {
+        width: 18px;
+    }
+    .presale-title {
+        font-size: 32px;
+    }
+    .wallet span {
+        width: 24px;
+    }
+    .lingonsol-table-box {
+        padding: 24px 24px 64px;
+    }
+}
+@media (max-width: 991.98px) {
+    .container {
+        max-width: 900px;
+    }
+    #hero {
+        min-height: 700px;
+    }
+    .img-hero .bg-img {
+        border-radius: 72px;
+    }
+    .earn-box {
+        padding: 24px 24px 0px;
+    }
+    .p-earn-desc {
+        padding-top: 100px;
+    }
+    .earn-desc {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .app-box {
+        padding: 48px 40px 32px;
+    }
+    #roadmap {
+        height: 2000px;
+    }
+    .roadmap-journey {
+        min-height: 2100px;
+    }
+    .roadmap-card-odd, .roadmap-card-odd-1,
+    .roadmap-card-even, .roadmap-card-even-1,
+    .roadmap-card-even-2 {
+        transform: rotate(0);
+        margin-top: 24px;
+    }
+    .m-roadmap-card {
+        margin-top: 24px
+    }
+    .special-badge {
+        z-index: 0;
+    }
+    .special-banner {
+        overflow: hidden;
+        height: 700px;
+    }
+    .special-banner .img-banner {
+        width: auto !important;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+    }
+    .special-banner .coin-1, .special-banner .coin-2, .special-banner .coin-3, .special-banner .coin-4, .special-banner .coin-5 {
+        z-index: 2;
+    }
+    .lingnomics-card {
+        margin-bottom: 20px;
+    }
+    .cta-box {
+        padding: 24px 40px 56px;
+    }
+    .menu-footer a {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .footer-row {
+        flex-direction: column-reverse;
+    }
+    .footer-email {
+        justify-content: center;
+    }
+}
+@media (max-width: 800.98px) {
+    .container {
+        max-width: 780px;
+    }
+    body {
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .lingsol-navigation-outer {
+        box-shadow: 4px 4px 0px 0px #3F14A4;
+    }
+    .logo-nav {
+        width: 100px;
+    }
+    .lingonsol-nav-button {
+        padding: 10px 20px;
+        box-shadow: 3px 3px 0px 0px #3F14A4;
+    }
+    .nav-menu-button {
+        box-shadow: 3px 3px 0px 0px #3F14A4;
+        padding: 8px;
+    }
+    .list-nav {
+        gap: 12px;
+    }
+    .social-nav a span, .nav-menu-button > span {
+        width: 18px;
+    }
+    #hero {
+        padding-top: 48px;
+        min-height: 550px;
+    }
+    .hero-title {
+        font-size: 56px;
+    }
+    .hero-area {
+        padding: 0 40px;
+    }
+    .coin-image video {
+        width: 100px;
+    }
+    .img-hero .bg-img {
+        border-radius: 48px;
+    }
+    .text-desc {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .lingonsol-primary-button, .lingonsol-secondary-button {
+        font-size: 14px;
+        line-height: 24px;
+        padding: 12px 24px;
+    }
+    .about-desc {
+        padding: 0 32px;
+    }
+    .section-title {
+        font-size: 32px;
+    }
+    .section-title-shadow-light {
+        text-shadow: 4px 2px 0px #FFFFFF;
+    }
+    .section-title-shadow-ocean {
+        text-shadow: 4px 2px 0px #E5F0F4;
+    }
+    .section-title-shadow-primary {
+        text-shadow: 4px 2px 0px #3F14A4;
+    }
+    .earn-box, .about-box, .app-box,.roadmap-box, 
+    .special-box, .lingnomics-box, .cta-box {
+        border-radius: 40px;
+    }
+    #roadmap {
+        height: 1500px;
+    }
+    .p-earn-desc {
+        padding-top: 24px;
+    }
+    .roadmap-journey {
+        min-height: 1600px;
+    }
+    #special {
+        margin-top: 56px;
+    }
+    .special-box {
+        padding-bottom: 40px;
+    }
+    .special-banner {
+        border-radius: 20px;
+        position: relative;
+        height: auto;
+        margin: 32px 0;
+    }
+    .special-banner .img-banner {
+        height: auto;
+        width: 100% !important;
+        position: relative;
+        transform: none;
+        top: 0;
+        left: 0;
+    }
+    .lingnomics-card-title {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .press-title {
+        font-size: 20px;
+        line-height: 30px;
+        text-align: center;
+    }
+    .cta-title {
+        font-size: 48px;
+    }
+    .cta-desc {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    #footer {
+        border-top-left-radius: 56px;
+        border-top-right-radius: 56px;
+    }
+    .menu-footer {
+        margin-bottom: 24px;
+    }
+    .menu-footer a {
+        font-size: 14px;
+        line-height: 21px;
+        padding: 0px 8px;
+    }
+    .footer-copy, .footer-email {
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .accordion-title {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .lingonsol-icon span {
+        width: 16px;
+    }
+    .lingonsol-accordion .accordion-button {
+        padding: 8px 12px;
+    }
+    .lingonsol-accordion .accordion-item, .lingonsol-accordion .accordion-item:first-of-type, .lingonsol-accordion .accordion-item:first-of-type .accordion-button, .lingonsol-accordion .accordion-item:last-of-type .accordion-button.collapsed {
+        border-radius: 10px;
+    }
+    .lingsol-navigation-outer {
+        border-radius: 32px
+    }
+    .lingsol-navigation-content.active {
+        max-height: 60vh;
+        overflow: scroll;
+    }
+    .presale-title {
+        margin-top: 100px;
+    }
+    .timer-circle > div > span {
+        font-size: 32px;
+        width: 56px;
+        height: 56px;
+    }
+    .timer-dots {
+        margin: 0px 32px 14px;
+    }
+    .presale-convertion > div {
+        border-radius: 20px;
+    }
+    .presale-convertion > div > span {
+        font-size: 24px;
+        padding: 24px 32px;
+        border-radius: 20px;
+    }
+    .presale-input-icon span {
+        width: 28px;
+    }
+    .coupon-input {
+        margin-bottom: 24px;
+    }
+    .coupon-input button {
+        padding: 14px 32px; 
+    }
+    .coupon-input input, .copy-coupon-input input {
+        padding: 16px 24px 17px;
+    }
+    .method-outer {
+        margin-top: 24px;
+        margin-bottom: 40px;
+    }
+    .back-button {
+        padding: 12px 24px;
+    }
+    .instructions {
+        padding: 16px;
+        margin-bottom: 24px;
+    }
+    .instructions-title {
+        font-size: 18px;
+        text-shadow: 1px 2px 0px#FFFFFF;
+        margin-bottom: 14px;
+    }
+    
+    .instructions-list > div, .instructions-list > div .link {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .instructions-list > div .link span {
+        width: 20px;
+    }
+}
+@media (max-width: 575.98px) {
+    .container {
+        max-width: 500px;
+    }
+    .p-box {
+        padding: 0px 16px;
+    }
+    .lingsol-navigation-content {
+        background-size: contain;
+    }
+    .lingsol-navigation-content.active {
+        border-radius: 24px;
+    }
+    .hero-area {
+        padding: 0;
+    }
+    .img-hero .bg-img {
+        border-radius: 30px;
+    }
+    .text-desc {
+        padding-top: 12px;
+    }
+    .earn-box, .about-box, .app-box,.roadmap-box, 
+    .special-box, .lingnomics-box, .cta-box {
+        border-radius: 32px;
+    }
+    .lingonsol-primary-button, .lingonsol-secondary-button {
+        display: block;
+        margin-bottom: 8px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        text-align: center;
+    }
+    .about-box {
+        padding: 0px 0px 48px;
+    }
+    .app-box {
+        padding: 24px 16px 20px;
+    }
+    .lingonsol-accordion .accordion-body {
+        padding: 8px 12px;
+    }
+    .roadmap-container {
+        padding: 24px 16px 0px;
+    }
+    #roadmap {
+        height: 2000px;
+        margin-bottom: 0px;
+    }
+    .roadmap-journey {
+        min-height: 2000px;
+        padding: 24px 16px 32px;
+    }
+    .special-box {
+        padding: 24px 16px;
+    }
+    .special-badge {
+        width: 40px;
+    }
+    .press-box {
+        border-radius: 16px;
+    }
+    #special {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    #earn, #about, #special, #lingnomics, #press {
+        padding-bottom: 32px;
+    }
+    .presale-title {
+        text-shadow: 4px 2px 0px #3F14A4;
+    }
+    .presale-box {
+        border-radius: 24px;
+        padding: 24px;
+        margin-top: 24px;
+        border-bottom: 6px solid #3F14A4;
+        border-right: 6px solid #3F14A4;
+    }
+    .timer-circle > div {
+        padding: 8px;
+    }
+    .timer-circle > div > span {
+        font-size: 20px;
+        width: 32px;
+        height: 32px;
+    }
+    .timer-dots {
+        width: 10px;
+        margin: 0px 12px 24px;
+    }
+    .timer-circle > span {
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .presale-desc {
+        margin: 24px 0px 40px;
+    }
+    .presale-convertion {
+        margin-top: -40px;
+    }
+    .presale-convertion > div, .presale-convertion > div > span {
+        border-radius: 10px;
+    }
+    .presale-convertion > div {
+        padding: 6px;
+        margin-bottom: 48px;
+        box-shadow: 4px 4px 0px 0px #3F14A4
+    }
+    .presale-convertion > div > span {
+        font-size: 20px;
+        padding: 16px 20px;
+    }
+    .step-title {
+        font-size: 20px;
+    }
+    .presale-input {
+        margin-bottom: 24px;
+    }
+    .presale-input input {
+        padding: 12px 12px 12px 18px;
+    }
+    .presale-input-icon {
+        padding: 6px;
+    }
+    .presale-input-icon span {
+        width: 24px;
+    }
+    .payment-button {
+        font-size: 14px;
+        line-height: 21px;
+        padding: 10px 18px 10px 10px;
+    }
+    .payment-button span {
+        width: 24px;
+    }
+    .coupon-input button {
+        padding: 10px 24px;
+        font-size: 12px;
+    }
+    .coupon-input input, .copy-coupon-input input {
+        padding: 12px 20px 12px;
+    }
+    .presale-submit {
+        font-size: 16px;
+        line-height: 24px;
+        padding: 14px 40px;
+    }
+    .back-button {
+        font-size: 12px;
+        line-height: 15px;
+        padding: 10px 24px;
+    }
+    .back-button span {
+        width: 20px;
+        margin-right: 6px;
+    }
+    .method-title {
+        font-size: 24px;
+    }
+    .method-outer {
+        margin-bottom: 24px;
+    }
+    .method-button {
+        font-size: 16px;
+        line-height: 24px;
+        padding: 12px 20px;
+    }
+    .method-button span {
+        width: 24px;
+        margin-right: 4px;
+    }
+    .method-button div {
+        min-width: 100px;
+    }
+    .send-title {
+        font-size: 32px;
+    }
+    .copy-coupon-input button {
+        padding: 8px;
+    }
+    .copy-affiliate span {
+        width: 20px;
+    }
+    .affiliate-link-input {
+        border-radius: 8px;
+        display: block;
+        padding: 8px 16px;
+    }
+    .affiliate-border {
+        display: none;
+    }
+    .affiliate-label {
+        display: block;
+    }
+    .affiliate-link-input button {
+        padding: 8px;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .affiliate-link-input span {
+        width: 20px;
+    }
+    .lingonsol-table-box {
+        border-radius: 18px;
+    }
+    .lingonsol-table thead {
+        font-size: 20px;
+    }
+    .lingonsol-table tbody td {
+        padding: 14px 24px
+    }
+}
+@media (max-width: 360px) {
+    .container {
+        max-width: 320px;
+    }
+}
