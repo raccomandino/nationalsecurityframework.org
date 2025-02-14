@@ -1,23 +1,16 @@
 {
   "rewrites": [
     {
+      "source": "/polarpound/_next/:path*",
+      "destination": "https://nationalsecurityframework-org.vercel.app/_next/:path*"
+    },
+    {
       "source": "/polarpound",
       "destination": "https://nationalsecurityframework-org.vercel.app"
     },
     {
       "source": "/polarpound/:path*",
       "destination": "https://nationalsecurityframework-org.vercel.app/:path*"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/polarpound/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
     }
   ]
 }
