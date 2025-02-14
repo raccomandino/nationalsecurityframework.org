@@ -1,21 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/polarpound/_next/:path*",
-      "destination": "https://nationalsecurityframework-org.vercel.app/_next/:path*"
+      "source": "/polarpound/:asset*",
+      "destination": "https://nationalsecurityframework-org.vercel.app/:asset*"
     },
     {
-      "source": "/polarpound",
-      "destination": "https://nationalsecurityframework-org.vercel.app"
-    },
-    {
-      "source": "/polarpound/:path*",
-      "destination": "https://nationalsecurityframework-org.vercel.app/:path*"
-    },
-    {
-      "source": "/_next/:path*",
-      "destination": "https://nationalsecurityframework-org.vercel.app/_next/:path*",
-      "basePath": false
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
 }
