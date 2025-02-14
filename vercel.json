@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/polarpound",
+      "destination": "https://nationalsecurityframework-org.vercel.app"
+    },
+    {
+      "source": "/polarpound/:path*",
+      "destination": "https://nationalsecurityframework-org.vercel.app/:path*"
+    }
+  ]
+}
