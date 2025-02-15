@@ -156,7 +156,7 @@ const BannerWrapper = styled.section`
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background: ${({ theme }) => theme.colors.bgPresaleBtn};
+      background: #007ca9cc;
       backdrop-filter: blur(10px);
       position: relative;
       display: flex;
@@ -224,7 +224,7 @@ const BannerWrapper = styled.section`
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background: ${({ theme }) => theme.colors.bgPresaleBtn};
+      background: #007ca9cc;
       backdrop-filter: blur(10px);
       position: relative;
       display: flex;
