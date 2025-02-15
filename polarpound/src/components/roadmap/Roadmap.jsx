@@ -115,7 +115,7 @@ const Roadmap = () => {
 
       <div className="roadmap-footer">
         <h3>The Future of Finance & Governance</h3>
-        <span>🚀 LLP is more than just a currency it's a global economic driver, a political tool, and a security infrastructure for the Polar Regions. With this structured 6-phase roadmap, LLP will evolve into a fully integrated, autonomous, and internationally recognized digital financial system.</span>
+        <span>🚀 LLP is more than just a currency. It is a global economic driver, a political tool, and a security infrastructure for the Polar Regions. With this structured 6-phase roadmap, LLP will evolve into a fully integrated, autonomous, and internationally recognized digital financial system.</span>
       </div>
     </div>
   );
