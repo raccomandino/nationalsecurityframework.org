@@ -610,9 +610,9 @@ const Banner = () => {
                       {" "}
                       {How2Buy.titleExtra}
                     </h5>
-                    <h1 className="d-flex justify-content-center fs-1 text-black">
+                    <h2 className="d-flex justify-content-center fs-1 text-black">
                       {How2Buy.title}
-                    </h1>
+                    </h2>
                     <h5 className="mt-15 d-flex justify-content-center text-black">
                       {How2Buy.subtitle}
                     </h5>

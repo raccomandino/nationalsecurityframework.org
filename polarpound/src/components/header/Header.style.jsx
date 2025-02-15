@@ -28,7 +28,7 @@ const HeaderWrapper = styled.div`
   .gittu-header-right {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 40px;
   }
 
   .gittu-header-right-menu {

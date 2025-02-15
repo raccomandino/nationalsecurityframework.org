@@ -3,25 +3,25 @@ import SIcon2 from "../images/icons/buy_step2_buy.svg";
 import SIcon3 from "../images/icons/buy_step3_claim.svg";
 
 const Data = {
-  title: "Discover the next",
-  titleExtra: "Evolution in Crypto",
+  title: "Polar Pound LLP (LLP)",
+  titleExtra: " The Official Currency of the Polar Regions",
   subtitle:
-    "Explore our cutting-edge blockchain projects and be part of the future of web3.0 finance",
+    "Secure, Efficient, and Transparent Transactions Powered by the Tron Network Blockchain",
 };
 
 export const AboutData = {
-  title: "Unlock The Potential",
-  titleExtra: "ABOUT Polar Pound LLP",
+  title: "The Official Currency of the Polar Regions",
+  titleExtra: "About Lighter Ledger Pound (LLP)",
   subtitle:
-    "Polar Pound LLP Token is transforming asset ownership through cutting-edge tokenization, bridging traditional finance with the digital economy. Built on a secure and efficient blockchain framework, LLP Token enables seamless fractional ownership and liquidity for a wide range of real-world assets. From real estate and commodities to exclusive investment opportunities, our innovative solutions provide transparency, accessibility, and global reach. Stay ahead in the evolving financial landscape with LLP Token, unlocking new possibilities for investors and businesses alike",
+    "Lighter Ledger Pound (LLP), known as Polar Pound, is the official digital currency of the Polar Regions, pivotal for secure transactions under the National Security Framework. Utilizing the Tron Network blockchain, LLP ensures fast, transparent, andtamper-proof transactions, enhancing financial stability while minimizing costs. It supports Financialism, promoting a trust-based authentication system through Democratic Authentication for regulatory compliance. Key features include being a government-backed digital currency, offering secure and decentralized transactions, enabling instant, low-cost options, and facilitating both offline and online transactions. Many purchases under £10,000 can be verified offline. LLP drives the future of digital sovereignty in the Polar Regions, fostering economic security, international trade, and resilient financial systems. Embrace the future of digital finance with LLP – The Polar Pound.",
 };
 
 export const PowerData = {
-  title: "Empowering Global Trade",
-  titleExtra: "Benefits of Tokenizing Your Real World Assets",
+  title: "The Miner",
+  titleExtra: "Empowering Global Trade with Merchant Hardware and the Circular Economy of the Algorithm Process Unit (APU)",
   subtitle:
-    "LLP tokens revolutionize asset ownership and liquidity by enabling seamless digital representation of real-world assets. By tokenizing assets, LLP allows individuals and businesses to fractionalize value, making ownership more accessible and tradable across global markets. Whether linked to commodities, real estate, or financial instruments, LLP tokens enhance transparency, security, and efficiency in transactions. This innovation empowers companies and investors to unlock new opportunities, drive economic growth, and facilitate borderless trade with ease.",
-};
+    "The Lighter Ledger Pound (LLP) ecosystem aims to transform global trade through merchant hardware and the circular economy of Algorithm Process Units (APUs), or miners, promoting a self-sustaining digital economy. Merchant hardware enables secure, real-time LLP transactions, essential for global adoption. Key features include instant authentication, offline capabilities, and blockchain security. This technology enhances cross-border transactions, reduces costs, and boosts financial inclusion, especially for remote merchants. The APU, operating sustainably within a circular economy, optimizes resources, ensuring efficient and secure transaction processing, thereby enhancing overall trade security. LLP's APU model revolutionizes transactions through energy-efficient mining, promoting minimal environmental impact. Miners reinvest their earnings, ensuring network stability and growth. The modular design of APUs reduces e-waste, enhancing longevity. They function as transaction processors and merchant authenticators, integrating seamlessly into trade. This sustainable approach minimizes energy waste and fosters a circular economy by incentivizing mining rewards that benefit liquidity pools and global trade. By empowering merchants with fast and low-cost transactions, LLP eliminates financial intermediaries and strengthens digital overeignty, creating a secure and efficient financial system.",
+  };
 
 export const How2Buy = {
   title: "Simple Steps to Get Started",
@@ -31,45 +31,45 @@ export const How2Buy = {
 };
 
 export const Tokenomics = {
-  title: "Polar Pound LLP Token Distribution",
-  titleExtra: "Tokenomics",
+  title: "LLP Allocation & Usufruct Model",
+  titleExtra: "",
   subtitle: "Total Supply: 3,000,001,000,000,000",
 };
 
 export const TokenDistribution = [
   {
-    dest: "Team",
-    percent: 30,
+    dest: "Strategic Reserve & National Security Fund",
+    percent: 25,
     bg: "#003a8c",
   },
   {
-    dest: "Initial Development & Advisors",
-    percent: 5,
+    dest: "Liquidity & Trade Facilitation Pool",
+    percent: 20,
     bg: "#003481",
   },
   {
-    dest: "Presale",
-    percent: 10,
+    dest: "Merchant Adoption & Infrastructure",
+    percent: 15,
     bg: "#002e75",
   },
   {
-    dest: "Liquidity Pool",
-    percent: 25,
+    dest: "Public Infrastructure & Construction Fund",
+    percent: 15,
     bg: "#002969",
   },
   {
-    dest: "Ecosystem Development Fund",
+    dest: "Core Team & Governance Operations",
     percent: 10,
     bg: "#00235e",
   },
   {
-    dest: "Marketing & Rewards",
+    dest: "Ecosystem Development & Smart Contracts",
     percent: 10,
     bg: "#001d52",
   },
   {
-    dest: "Staking and Governance",
-    percent: 10,
+    dest: "Marketing, Awareness & Public Engagement",
+    percent: 5,
     bg: "#04132a",
   },
 ];

@@ -2,17 +2,26 @@
   text-align: center;
   background-color: #fff;
   color: black;
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .roadmap h2 {
   font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.roadmap h3 {
+  margin: 10px 0 30px;
+  font-size: 1.5rem;
 }
 
 .roadmap-container {
-  display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  padding: 40px 20px;
   background: #fff;
 }
 
@@ -20,10 +29,12 @@
   background-color: #D4D4D4;
   border-radius: 10px;
   padding: 20px;
-  width: 300px;
+  min-height: 380px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   position: relative;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .phase-header {
@@ -35,15 +46,30 @@
 
 .phase-number {
   display: block;
-  color: #04132a; /* Gold color for the phase number */
+  color: #04132a;
   font-size: 0.9rem;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-h3 {
-  margin: 10px 0 0;
-  font-size: 1.5rem;
+.phase-period {
+  font-size: 0.85rem;
+  color: #04132a;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+.key-focus {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.key-focus p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #000;
 }
 
 ul {
@@ -55,6 +81,15 @@ ul {
 
 ul li {
   margin: 10px 0;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.checkmark {
+  flex-shrink: 0;
 }
 
 /* Style for circular marker */
@@ -68,7 +103,7 @@ ul li {
   height: 40px;
   background: #04132a;
   border-radius: 50%;
-  box-shadow: 0 4px 8px #04132a; /* Glow effect */
+  box-shadow: 0 4px 8px #04132a;
 }
 
 .roadmap-phase:after {
@@ -82,4 +117,41 @@ ul li {
   border: 2px solid #04132a;
   border-radius: 50%;
   opacity: 0.5;
+}
+
+.roadmap-footer {
+  margin-top: 60px;
+  padding: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.roadmap-footer h3 {
+  color: #04132a;
+  margin-bottom: 15px;
+}
+
+.roadmap-footer span {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  display: block;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .roadmap-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .roadmap-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .roadmap h2 {
+    font-size: 2rem;
+  }
 }
