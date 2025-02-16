@@ -357,6 +357,7 @@ const Banner = () => {
                           />
                         </div>
                       </div>
+                      {/*
                       <div className="presale-item mt-2 mb-30 px-1">
                         <label className="d-flex gap-2">
                           <input type="radio" name="currency" value="usd" />
@@ -377,7 +378,7 @@ const Banner = () => {
                             (inputValue * trxPrice * eur2Usd).toFixed(3)
                           )}
                         </label>
-                      </div>
+                      </div>*/}
                       <ul className="token-info-list mb-35">
                         <li>
                           <p>{presaleInfo.symbol} Balance</p>
