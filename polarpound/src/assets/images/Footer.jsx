@@ -11,7 +11,8 @@ const Footer = () => {
         <span>© 2024 CODE. All rights reserved</span>
       </div> */}
       <div className="footer-title-bottom">
-        <span>© 2025 National Security Framework of the Polar Regions. All Rights Reserved.</span>
+        <span>© 2025 National Security Framework of the </span> 
+        <span>Polar Regions. All Rights Reserved.</span>
       </div>
     </div>
   );

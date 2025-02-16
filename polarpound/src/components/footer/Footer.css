@@ -12,8 +12,14 @@
 
 .footer-title-bottom {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     font-size: 14px;
     padding-bottom: 8px;
     color: black;
+    text-align: center;
+}
+
+.footer-title-bottom span {
+    line-height: 1.5;
 }

@@ -95,7 +95,7 @@ const Faq = () => {
       <div className="row">
         <div className="col">
           <div className="section-header section-header--center section-header--medium-margin">
-            <h2>Lighter Ledger Pound (LLP) – Frequently Asked Questions (FAQ)</h2>
+            <h2>Frequently Asked Questions (FAQ)</h2>
             <span>
               Below are 20 frequently asked questions about Lighter Ledger Pound (LLP) and how it
               integrates with governance, security, and trade in the Polar Regions.

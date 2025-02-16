@@ -84,6 +84,7 @@ ul li {
   font-size: 0.9rem;
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   gap: 8px;
   line-height: 1.4;
 }

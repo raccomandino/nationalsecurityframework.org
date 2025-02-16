@@ -17,7 +17,7 @@ const CountdownWrapper = styled.div`
         content: ":";
         top: 0;
         right: -5px;
-        font-family: ${({ theme }) => theme.fonts.primary};
+        font-family: "${({ theme }) => theme.fonts.body}";
         font-weight: 700;
         font-size: 40px;
         line-height: 60px;
@@ -27,7 +27,7 @@ const CountdownWrapper = styled.div`
   }
 
   .count {
-    font-family: ${({ theme }) => theme.fonts.primary};
+    font-family: ${({ theme }) => theme.fonts.body};
     font-weight: 700;
     font-size: 40px;
     line-height: 60px;

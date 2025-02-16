@@ -20,40 +20,26 @@ const MobileMenuWrapper = styled.div`
     z-index: -1;
   }
 
-  .connect-wallet-btn {
-    border: 0px;
-    padding: 12px;
-    min-width: 185px;
-    border-radius: 25px;
-    background: rgba(0, 0, 0, 1);
-    backdrop-filter: blur(10px);
-    font-family: Outfit, sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 26px;
-    text-transform: uppercase;
-    color: rgb(255, 255, 255);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: 0.3s;
-  }
   .gittu-mobile-menu-content {
     width: 400px;
     height: 100%;
-    background: ${({ theme }) => theme.colors.bgHeader};
+    background: linear-gradient(135deg, 
+      #C0C0C0 0%,
+      #808080 25%,
+      #404040 50%,
+      #202020 75%,
+      #000000 100%
+    );
     padding: 30px;
     animation: 0.4s sidebarAnimation;
     overflow-y: auto;
     -ms-overflow-style: none;
-    /* Internet Explorer 10+ */
     scrollbar-width: none;
     transition: width 0.3s;
+    color: #FFFFFF;
 
     &::-webkit-scrollbar {
       display: none;
-      /* Safari and Chrome */
     }
   }
 
@@ -84,7 +70,7 @@ const MobileMenuWrapper = styled.div`
     border: 0;
     background: transparent;
     font-size: 20px;
-    color: ${({ theme }) => theme.colors.black};
+    color: #FFFFFF;
   }
 
   .mobile-menu-list {
@@ -94,7 +80,7 @@ const MobileMenuWrapper = styled.div`
       font-weight: 500;
       font-size: 18px;
       line-height: 40px;
-      color: ${({ theme }) => theme.colors.black};
+      color: #FFFFFF;
       transition: 0.3s;
 
       &.active {
@@ -102,7 +88,7 @@ const MobileMenuWrapper = styled.div`
       }
 
       &:hover {
-        color: ${({ theme }) => theme.colors.primary};
+        opacity: 0.8;
       }
     }
   }
@@ -113,18 +99,13 @@ const MobileMenuWrapper = styled.div`
     justify-content: center;
     gap: 20px;
     li a {
-      width: 40px;
-      height: 40px;
-      background: ${({ theme }) => theme.colors.black}26;
-      backdrop-filter: blur(10px);
-      border-radius: 25px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
       transition: 0.3s;
       img {
-        width: 18px;
+        width: 40px;
         transition: 0.3s;
       }
       &:hover {
@@ -134,7 +115,28 @@ const MobileMenuWrapper = styled.div`
   }
 
   .connect-wallet-btn {
+    border: 0px;
+    padding: 12px;
+    min-width: 185px;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    font-family: Outfit, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s;
     width: 100%;
+
+    &:hover {
+      background: rgba(0, 0, 0, 1);
+    }
   }
 
   @media screen and (max-width: 480px) {

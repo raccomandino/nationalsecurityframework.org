@@ -13,9 +13,6 @@ const HeaderWrapper = styled.div`
     background: ${({ theme }) => theme.colors.bgHeader};
   }
 
-  span.count {
-    font-family: 'Outfit' !important;
-}
   .gittu-header-content {
     display: flex;
     align-items: center;
