@@ -63,11 +63,6 @@ const MobileMenu = ({ mobileMenuHandle }) => {
             </a>
           </li>
         </ul>
-
-        <div className="d-flex justify-content-center">
-          {/* <ConnectWalletButton /> */}
-          <WalletActionButton className="connect-wallet-btn" />
-        </div>
       </div>
     </MobileMenuWrapper>
   );
