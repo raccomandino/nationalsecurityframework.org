@@ -20,7 +20,7 @@ import BannerData, {
   PowerData,
   How2Buy,
   BuySteps,
-  Tokenomics,
+  Economics,
   TokenDistribution,
 } from "../../assets/data/bannerV9";
 import TokenInfo from "../tokenInfo/TokenInfo";
@@ -210,7 +210,7 @@ const Banner = () => {
           <div className="col-lg-6">
             <div className="gittu-banner-left">
               <h1 className="banner-title">{BannerData.title}</h1>
-              <h2 className="text-black">{BannerData.titleExtra}</h2>
+              <h3 className="text-black">{BannerData.titleExtra}</h3>
               <h5 className="mt-15 text-black">{BannerData.subtitle}</h5>
 
               <div className="mt-40 mb-40">
@@ -297,10 +297,10 @@ const Banner = () => {
                             Pay with TRX
                           </button>
                           <div className="d-flex justify-content-between">
-                            <h6 className="balance-sub">Balance:</h6>
-                            <h6 className="balance-sub">
+                            <h5 className="balance-sub">Balance:</h5>
+                            <h5 className="balance-sub">
                               {trxBalance.toLocaleString()} TRX
-                            </h6>
+                            </h5>
                           </div>
                         </div>
                         {/* <div className="presale-item-inner">
@@ -330,7 +330,7 @@ const Banner = () => {
 
                       <div className="presale-item">
                         <div className="presale-item-inner">
-                          <h6>
+                          <h5>
                             {" "}
                             Amount{" "}
                             <span
@@ -338,7 +338,7 @@ const Banner = () => {
                             >
                               {selectedPay == 0 ? "TRX" : "USDT"}
                             </span>
-                          </h6>
+                          </h5>
                           <input
                             type="number"
                             placeholder="0"
@@ -347,7 +347,7 @@ const Banner = () => {
                           />
                         </div>
                         <div className="presale-item-inner">
-                          <h6>Get Amount ( {presaleInfo.symbol} )</h6>
+                          <h5>Get Amount ( {presaleInfo.symbol} )</h5>
                           <input
                             type="text"
                             placeholder="0"
@@ -498,21 +498,18 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <div className="gittu-banner-slider">
-        <SmoothSlider />
-      </div>
 
       <div className="container">
         <section id="about" style={{ marginTop: "36px" }}>
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="gittu-banner-left">
-                <h4 className="mt-15" style={{ color: "rgb(00 00 00)" }}>
+                <h6 className="mt-15" style={{ color: "rgb(00 00 00)" }}>
                   {" "}
                   {AboutData.titleExtra}
-                </h4>
-                <h1 className="banner-title">{AboutData.title}</h1>
-                <h6 className="mt-15 text-black">{AboutData.subtitle}</h6>
+                </h6>
+                <h3 className="text-black">{AboutData.title}</h3>
+                <h5 className="mt-15 text-black">{AboutData.subtitle}</h5>
                 <div className="col-lg-6">
                   <Button
                     className="mt-15 w-[245px]"
@@ -523,7 +520,7 @@ const Banner = () => {
                   </Button>
                 </div>
                 <div className="about-item mt-15">
-                  <h6 className="w-24">Token Contract Address</h6>
+                  <h5 className="w-24">Token Contract Address</h5>
                   <div className="copy-box">
                     <input type="text" value={SALE_TOKEN} disabled />
                     <CopyToClipboard text={SALE_TOKEN} onCopy={onCopyCA}>
@@ -537,7 +534,7 @@ const Banner = () => {
                   </div>
                 </div>
                 <div className="about-item mt-15">
-                  <h6 className="w-24">Presale Contract Address</h6>
+                  <h5 className="w-24">Presale Contract Address</h5>
                   <div className="copy-box">
                     <input type="text" value={TRON_PRESALE_ADDR} disabled />
                     <CopyToClipboard text={TRON_PRESALE_ADDR} onCopy={onCopySA}>
@@ -582,20 +579,18 @@ const Banner = () => {
             </div>
             <div className="col-lg-6">
               <div className="gittu-banner-left">
-                <h4 className="mt-15" style={{ color: "rgb(00 00 00)" }}>
+                <h6 className="mt-15" style={{ color: "rgb(00 00 00)" }}>
                   {" "}
                   {PowerData.titleExtra}
-                </h4>
-                <h1 className="banner-title">{PowerData.title}</h1>
-                <h6 className="mt-15 text-black">{PowerData.subtitle}</h6>
+                </h6>
+                <h3 className="text-black">{PowerData.title}</h3>
+                <h5 className="mt-15 text-black">{PowerData.subtitle}</h5>
               </div>
             </div>
           </div>
         </section>
       </div>
-      <div className="gittu-banner-slider">
-        <SmoothSliderData data={PowerSlideData} />
-      </div>
+
       <div className="container mt-5">
         <section id="tobuy">
           <div className="row align-items-center">
@@ -629,7 +624,7 @@ const Banner = () => {
                           style={{ width: 48 }}
                         />
                         <h3 className="setup-title">{buystep.title}</h3>
-                        <h6 className="mt-15 text-black">{buystep.des}</h6>
+                        <h5 className="mt-15 text-black">{buystep.des}</h5>
                       </div>
                     ))}
                   </div>
@@ -639,31 +634,31 @@ const Banner = () => {
           </div>
         </section>
       </div>
-      <section id="tokenomics" className="section-container tokenomics-bg">
+      <section id="Economics" className="section-container Economics-bg">
         <div className="card-content">
           <h5
             className="d-flex justify-content-left text-uppercase"
             style={{ color: "rgb(00 00 00)" }}
           >
             {" "}
-            {Tokenomics.titleExtra}
+            {Economics.titleExtra}
           </h5>
           <h1 className="d-flex justify-content-left fs-1 text-black">
-            {Tokenomics.title}
+            {Economics.title}
           </h1>
           <div className="mt-40 mb-40">
             <a
               className="whitepaper-btn"
-              href=""
+              href="https://www.nationalsecurityframework.org/polarpound/public/assets/Public%20Release%20Paper.pdf"
               target="_blank"
               rel="noreferrer"
             >
               <img src={DocumentIcon.src} alt="icon" />
-              Token Release
+              Public Release
             </a>
           </div>
           <h5 className="mt-15 d-flex justify-content-left text-black">
-            {Tokenomics.subtitle}
+            {Economics.subtitle}
           </h5>
         </div>
 

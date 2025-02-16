@@ -12,6 +12,14 @@ const BannerWrapper = styled.section`
   position: relative;
   z-index: 0;
 
+    @font-face {
+    font-family: 'NSF';
+    src: url('/assets/fonts/font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
   .connect-wallet-btn {
     backdrop-filter: blur(7.5px);
     border-radius: 30px;
@@ -57,7 +65,7 @@ const BannerWrapper = styled.section`
   .section-container {
     padding: 80px 24px;
   }
-  .tokenomics-bg {
+  .Economics-bg {
     background: ${({ theme }) => theme.colors.bgBannerV1};
     margin-top: 24px;
   }

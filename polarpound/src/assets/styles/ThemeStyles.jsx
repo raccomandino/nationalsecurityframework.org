@@ -1,7 +1,7 @@
 const ThemeStyles = {
   fonts: {
     body: "'Inter', sans-serif",
-    primary: "'Outfit', sans-serif",
+    primary: "'NSF', sans-serif",
     secondary: "'Orbitron', sans-serif",
     title: "'Kufam', sans-serif",
     title2: "'Bebas Neue', sans-serif",

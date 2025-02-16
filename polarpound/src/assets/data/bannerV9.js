@@ -3,24 +3,24 @@ import SIcon2 from "../images/icons/buy_step2_buy.svg";
 import SIcon3 from "../images/icons/buy_step3_claim.svg";
 
 const Data = {
-  title: "Polar Pound LLP (LLP)",
-  titleExtra: " The Official Currency of the Polar Regions",
+  title: "Polar Pound (LLP)",
+  titleExtra: "The Official Currency of the National Security Framework of the Polar Regions",
   subtitle:
-    "Secure, Efficient, and Transparent Transactions Powered by the Tron Network Blockchain",
+    "Secure, Efficient, and Transparent Transactions Powered by the Tron Blockchain Network",
 };
 
 export const AboutData = {
-  title: "The Official Currency of the Polar Regions",
+  title: "The Official Currency of the National Security Framework of the Polar Regions",
   titleExtra: "About Lighter Ledger Pound (LLP)",
   subtitle:
-    "Lighter Ledger Pound (LLP), known as Polar Pound, is the official digital currency of the Polar Regions, pivotal for secure transactions under the National Security Framework. Utilizing the Tron Network blockchain, LLP ensures fast, transparent, andtamper-proof transactions, enhancing financial stability while minimizing costs. It supports Financialism, promoting a trust-based authentication system through Democratic Authentication for regulatory compliance. Key features include being a government-backed digital currency, offering secure and decentralized transactions, enabling instant, low-cost options, and facilitating both offline and online transactions. Many purchases under £10,000 can be verified offline. LLP drives the future of digital sovereignty in the Polar Regions, fostering economic security, international trade, and resilient financial systems. Embrace the future of digital finance with LLP – The Polar Pound.",
+    "Lighter Ledger Pound (LLP), known as Polar Pound, is the official digital currency of the National Security Framework of the Polar Regions, pivotal for secure transactions under the National Security Ecosystem. Utilizing the Tron blockchain network, LLP ensures fast, transparent, and tamper-proof transactions, enhancing financial stability while minimizing costs. It supports Financialism, promoting a trust-based authentication system through Democratic Authentication for regulatory compliance. Key features include being a government-backed digital currency, offering secure and decentralized transactions, enabling instant, low-cost options, and facilitating both offline and online transactions. Many purchases under £10,000 can be verified offline. LLP drives the future of digital sovereignty in the Polar Regions, fostering economic security, international trade, and resilient financial systems. Embrace the future of digital finance with LLP – The Polar Pound.",
 };
 
 export const PowerData = {
   title: "The Miner",
   titleExtra: "Empowering Global Trade with Merchant Hardware and the Circular Economy of the Algorithm Process Unit (APU)",
   subtitle:
-    "The Lighter Ledger Pound (LLP) ecosystem aims to transform global trade through merchant hardware and the circular economy of Algorithm Process Units (APUs), or miners, promoting a self-sustaining digital economy. Merchant hardware enables secure, real-time LLP transactions, essential for global adoption. Key features include instant authentication, offline capabilities, and blockchain security. This technology enhances cross-border transactions, reduces costs, and boosts financial inclusion, especially for remote merchants. The APU, operating sustainably within a circular economy, optimizes resources, ensuring efficient and secure transaction processing, thereby enhancing overall trade security. LLP's APU model revolutionizes transactions through energy-efficient mining, promoting minimal environmental impact. Miners reinvest their earnings, ensuring network stability and growth. The modular design of APUs reduces e-waste, enhancing longevity. They function as transaction processors and merchant authenticators, integrating seamlessly into trade. This sustainable approach minimizes energy waste and fosters a circular economy by incentivizing mining rewards that benefit liquidity pools and global trade. By empowering merchants with fast and low-cost transactions, LLP eliminates financial intermediaries and strengthens digital overeignty, creating a secure and efficient financial system.",
+    "The Lighter Ledger Pound (LLP) ecosystem aims to transform global trade through merchant hardware and the circular economy of the Algorithm Process Units (APUs), or miners, promoting a self-sustaining digital economy. Merchant hardware enables secure, real-time LLP transactions, essential for global adoption. Key features include instant authentication, offline capabilities, and blockchain security. This technology enhances cross-border transactions, reduces costs, and boosts financial inclusion, especially for remote merchants. The APU, operating sustainably within a circular economy, optimizes resources, ensuring efficient and secure transaction processing, thereby enhancing overall trade security. LLP's APU model revolutionizes transactions through energy-efficient mining, promoting minimal environmental impact. Miners reinvest their earnings, ensuring network stability and growth. The modular design of APUs reduces e-waste, enhancing longevity. They function as transaction processors and merchant authenticators, integrating seamlessly into trade. This sustainable approach minimizes energy waste and fosters a circular economy by incentivizing mining rewards that benefit liquidity pools and global trade. By empowering merchants with fast and low-cost transactions, LLP eliminates financial intermediaries and strengthens digital sovereignty, creating a secure and efficient financial system.",
   };
 
 export const How2Buy = {
@@ -30,7 +30,7 @@ export const How2Buy = {
     "Follow these easy steps to purchase LLP tokens and join our innovative ecosystem.",
 };
 
-export const Tokenomics = {
+export const Economics = {
   title: "LLP Allocation & Usufruct Model",
   titleExtra: "",
   subtitle: "Total Supply: 3,000,001,000,000,000",

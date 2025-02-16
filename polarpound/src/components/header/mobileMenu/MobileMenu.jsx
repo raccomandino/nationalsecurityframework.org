@@ -3,8 +3,8 @@ import Image from "next/image";
 import { WalletActionButton } from "@tronweb3/tronwallet-adapter-react-ui";
 import MobileMenuWrapper from "./MobileMenu.style";
 import Logo from "../../../assets/images/logo.png";
-import Telegram from "../../../assets/images/icons/telegram-dark.svg";
-import Twitter from "../../../assets/images/icons/twitter-dark.svg";
+import Linkedin from "../../../assets/images/icons/linkedin.svg";
+import Twitter from "../../../assets/images/icons/x.svg";
 import { AiOutlineClose } from "react-icons/ai";
 import { HeaderMobileData } from "../../../assets/data/demoMenuList";
 
@@ -41,7 +41,7 @@ const MobileMenu = ({ mobileMenuHandle }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <img src={Telegram.src} alt="icon" />
+              <img src={Linkedin.src} alt="icon" />
             </a>
           </li>
           {/* <li>

@@ -42,8 +42,8 @@ const Header = ({ variant }) => {
               </ul>
               <ul className="gittu-header-menu">
                 <li>
-                  <a href="#tokenomics" rel="noreferrer">
-                    Tokenomics
+                  <a href="#Economics" rel="noreferrer">
+                    Economics
                   </a>
                 </li>
               </ul>

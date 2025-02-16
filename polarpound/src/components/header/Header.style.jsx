@@ -13,6 +13,9 @@ const HeaderWrapper = styled.div`
     background: ${({ theme }) => theme.colors.bgHeader};
   }
 
+  span.count {
+    font-family: 'Outfit' !important;
+}
   .gittu-header-content {
     display: flex;
     align-items: center;
@@ -76,7 +79,7 @@ const HeaderWrapper = styled.div`
       justify-content: center;
       transition: 0.3s;
       img {
-        width: 14px;
+        width: 20px;
         transition: 0.3s;
       }
       &:hover {

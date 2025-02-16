@@ -85,8 +85,8 @@ const Roadmap = () => {
   return (
     <div className="roadmap">
       <h2>Lighter Ledger Pound (LLP) – 6-Phase Roadmap</h2>
-      <h3>Building a Secure, Scalable, and Politically-Integrated Financial System for the Polar Regions</h3>
-      
+      <span>Building a Secure, Scalable, and Politically-Integrated Financial System for the National Security Framework of the Polar Regions</span>
+
       <div className="roadmap-container">
         {phases.map((phase, index) => (
           <div key={index} className="roadmap-phase">
@@ -95,12 +95,12 @@ const Roadmap = () => {
               <h3>{phase.title}</h3>
               <span className="phase-period">{phase.period}</span>
             </div>
-            
+
             <div className="key-focus">
               <p><strong>📌 Key Focus:</strong></p>
               <p>{phase.keyFocus}</p>
             </div>
-            
+
             <ul>
               {phase.tasks.map((task, taskIndex) => (
                 <li key={taskIndex}>
@@ -115,7 +115,10 @@ const Roadmap = () => {
 
       <div className="roadmap-footer">
         <h3>The Future of Finance & Governance</h3>
-        <span>🚀 LLP is more than just a currency. It is a global economic driver, a political tool, and a security infrastructure for the Polar Regions. With this structured 6-phase roadmap, LLP will evolve into a fully integrated, autonomous, and internationally recognized digital financial system.</span>
+        <span>🚀 LLP is more than just a currency. It is a global economic driver, a political tool, and a
+          security infrastructure for the National Security Framework of the Polar Regions. With
+          this structured 6-phase roadmap, LLP will evolve into a fully integrated, autonomous,
+          and internationally recognized digital financial system.</span>
       </div>
     </div>
   );

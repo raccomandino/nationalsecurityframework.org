@@ -51,8 +51,8 @@ export const HeaderMobileData = [
     url: "#tobuy",
   },
   {
-    title: "Tokenomics",
-    url: "#tokenomics",
+    title: "Economics",
+    url: "#Economics",
   },
   {
     title: "Roadmap",
@@ -78,7 +78,7 @@ export const HeaderMobileDataReferral = [
     url: "/",
   },
   {
-    title: "Tokenomics",
+    title: "Economics",
     url: "/",
   },
   {

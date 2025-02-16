@@ -1,12 +1,11 @@
-import TelegramImg from "../images/icons/telegram-dark.svg";
-import DiscordImg from "../images/icons/discord.svg";
-import TwitterImg from "../images/icons/twitter-dark.svg";
+import TwitterImg from "../images/icons/x.svg";
+import LinkedinImg from "../images/icons/linkedin.svg";
 
 const Data = [
   {
-    title: "telegram",
-    icon: TelegramImg,
-    url: "",
+    title: "linkedin",
+    icon: LinkedinImg,
+    url: "https://www.linkedin.com/company/nsframework/",
   },
   // {
   //   title: "discord",
@@ -16,7 +15,7 @@ const Data = [
   {
     title: "twitter",
     icon: TwitterImg,
-    url: "",
+    url: "https://x.com/polarpound",
   },
 ];
 
