@@ -12,7 +12,14 @@ const TokenInfo = ({ variant }) => {
       <li>
         <p>Token Name | Symbol </p>
         <h6>
-          {tokenName} ({tokenSymbol})
+          {loading ? (
+            <span className="placeholder col-4" />
+          ) : (
+            <>
+              {" "}
+              {tokenName} ({tokenSymbol}){" "}
+            </>
+          )}
         </h6>
       </li>
       <li>
