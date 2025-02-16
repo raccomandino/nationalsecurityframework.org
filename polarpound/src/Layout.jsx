@@ -4,11 +4,7 @@ import $ from 'jquery'
 
 const Layout = ({ pageTitle, children }) => {
   useEffect(() => {
-    // accordion
-    $('.accordion > li:eq(0) a').addClass('active').next().slideDown()
-
     $('.accordion a').click(function (j) {
-      // eslint-disable-next-line no-var
       var dropDown = $(this).closest('li').find('p')
 
       $(this).closest('.accordion').find('p').not(dropDown).slideUp()
@@ -24,11 +20,13 @@ const Layout = ({ pageTitle, children }) => {
 
       j.preventDefault()
     })
+    
     return () => {
       // Clean up to avoid memory leaks
       $('.accordion a').off('click');
     };
   }, [])
+
   return (
     <HelmetProvider>
       <Helmet>

@@ -210,10 +210,10 @@ const BannerWrapper = styled.section`
     }
   }
 
-  .gittu-tobuy {
-    padding-inline: 24px;
+.gittu-tobuy {
+    padding: 0;
     max-width: 100%;
-    margin-left: auto;
+    margin: 0 auto;
     position: relative;
 
     .overlay {
