@@ -41,6 +41,8 @@ import {
   TOKEN_DECIMALS,
   EXCHANGE_API_KEY,
   EXCHANGERATE_API_KEY,
+  PRESALE_END_TS,
+  PRESALE_START_TS,
 } from "../../constants";
 import CopiedLogo from "../../assets/images/copied.svg";
 import CopyLogo from "../../assets/images/copy.svg";
@@ -122,13 +124,13 @@ const Banner = () => {
   useEffect(() => {
     async function fetchTrxPrice() {
       try {
-        const response = await fetch(
+        const data = await axios.get(
           "https://apilist.tronscanapi.com/api/token/price?token=trx"
         );
-        const data = await response.json();
-        // console.log("debug fetch TRX::", data);
-        if (data.price_in_usd) {
-          setTrxPrice(parseFloat(data.price_in_usd));
+        // console.log('debug data::', data);
+        if (data.status == 200) {
+          console.log("debug trx price::", parseFloat(data.data.price_in_usd));
+          setTrxPrice(parseFloat(data.data.price_in_usd));
         }
       } catch (error) {
         console.error("Error fetching TRX price:", error);
@@ -136,41 +138,6 @@ const Banner = () => {
     }
     fetchTrxPrice();
   }, [slowRefresh, loading]);
-
-  useEffect(() => {
-    async function fetchCurrencyPrice() {
-      try {
-        const gbpResponse = await axios.get(
-          `https://v6.exchangerate-api.com/v6/${EXCHANGERATE_API_KEY}/pair/USD/GBP`
-        );
-        console.log("debug eur res::", gbpResponse);
-        if (gbpResponse.data) {
-          setGbp2Usd(gbpResponse.data.conversion_rate);
-        }
-        const eurResponse = await axios.get(
-          `https://v6.exchangerate-api.com/v6/${EXCHANGERATE_API_KEY}/pair/USD/EUR`
-        );
-        if (eurResponse.data) {
-          setEur2Usd(eurResponse.data.conversion_rate);
-        }
-        // const eurData = await eurResponse.json();
-        // if (eurData) {
-        //   setEur2Usd(eurData);
-        // }
-        // const gbpResponse = await fetch(
-        //   "https://api.excelapi.org/currency/rate?pair=gbp-usd"
-        // );
-        // const gbpData = await gbpResponse.json();
-        // if (gbpData) {
-        //   setGbp2Usd(gbpData);
-        // }
-      } catch (error) {
-        console.error("Error fetching TRX price:", error);
-      }
-    }
-
-    fetchCurrencyPrice();
-  }, [apiRefresh, loading]);
 
   useEffect(() => {
     async function fetchAccountInfo() {
@@ -411,43 +378,36 @@ const Banner = () => {
                       {/* <p className="presale-stage-title text-uppercase">
                         Stage {currentStage}: {currentBonus}% Bonus!
                       </p> */}
-                      {nowTs < parseInt(presaleInfo.startTime) && (
+                      {nowTs < PRESALE_START_TS && (
                         <>
                           <h5 className="fw-600 text-black text-uppercase">
                             Pre-sale starts in
                           </h5>
 
                           <div className="mt-1 mb-17">
-                            <Countdown
-                              endDate={parseInt(presaleInfo.startTime)}
-                            />
+                            <Countdown endDate={PRESALE_START_TS} />
                           </div>
                         </>
                       )}
-                      {nowTs >= parseInt(presaleInfo.startTime) &&
-                        nowTs < parseInt(presaleInfo.endTime) && (
-                          <>
-                            <h5 className="fw-600 text-black text-uppercase">
-                              Pre-sale ends in
-                            </h5>
+                      {nowTs >= PRESALE_START_TS && nowTs < PRESALE_END_TS && (
+                        <>
+                          <h5 className="fw-600 text-black text-uppercase">
+                            Pre-sale ends in
+                          </h5>
 
-                            <div className="mt-1 mb-17">
-                              <Countdown
-                                endDate={parseInt(presaleInfo.endTime)}
-                              />
-                            </div>
-                          </>
-                        )}
-                      {nowTs >= parseInt(presaleInfo.endTime) && (
+                          <div className="mt-1 mb-17">
+                            <Countdown endDate={PRESALE_END_TS} />
+                          </div>
+                        </>
+                      )}
+                      {nowTs >= PRESALE_END_TS && (
                         <>
                           <h5 className="fw-600 text-black text-uppercase">
                             Pre-sale ended
                           </h5>
 
                           <div className="mt-1 mb-17">
-                            <Countdown
-                              endDate={parseInt(presaleInfo.endTime)}
-                            />
+                            <Countdown endDate={PRESALE_END_TS} />
                           </div>
                         </>
                       )}
@@ -457,9 +417,16 @@ const Banner = () => {
 
                       <div className="presale-raised fw-500 mb-25">
                         <p className="fs-15 text-black">
-                          Sold: {presaleInfo.totalTokenSold}{" "}
-                          {presaleInfo.symbol}
+                          Sold:
+                          {loading ? (
+                            <span className="placeholder col-4" />
+                          ) : (
+                            <>
+                              {presaleInfo.totalTokenSold} {presaleInfo.symbol}
+                            </>
+                          )}
                         </p>
+
                         <p className="fs-15 text-black">
                           Goal: 500,000,000 {presaleInfo.symbol}
                         </p>
@@ -467,20 +434,34 @@ const Banner = () => {
 
                       <div className="presale-raised fw-500 mb-25">
                         <p className="fs-15 text-black">
-                          Raised: ${" "}
-                          {(
-                            presaleInfo.totalTokenSold *
-                            trxPrice *
-                            presaleInfo.tokenPrice
-                          ).toFixed(2)}
+                          Raised:
+                          {loading ? (
+                            <span className="placeholder col-4" />
+                          ) : (
+                            <>
+                              ${" "}
+                              {(
+                                presaleInfo.totalTokenSold *
+                                trxPrice *
+                                presaleInfo.tokenPrice
+                              ).toFixed(2)}
+                            </>
+                          )}
                         </p>
                         <p className="fs-15 text-black">
-                          Goal: ${" "}
-                          {(
-                            500000000 *
-                            trxPrice *
-                            presaleInfo.tokenPrice
-                          ).toLocaleString(2)}
+                          Goal:
+                          {loading ? (
+                            <span className="placeholder col-4" />
+                          ) : (
+                            <>
+                              ${" "}
+                              {(
+                                500000000 *
+                                trxPrice *
+                                presaleInfo.tokenPrice
+                              ).toLocaleString(2)}
+                            </>
+                          )}
                         </p>
                       </div>
 
@@ -556,10 +537,10 @@ const Banner = () => {
                 style={{ width: "512px", height: "512px" }}
               ></img> */}
               <Image
-              src= "/images/bsure-brand.png"
-              alt="llp brand"
-              width={512}
-              height={512}
+                src="/images/bsure-brand.png"
+                alt="llp brand"
+                width={512}
+                height={512}
               />
             </div>
           </div>
@@ -571,11 +552,11 @@ const Banner = () => {
                 src={Brand.src}
                 style={{ width: "480px", height: "480px" }}
               ></img> */}
-                            <Image
-              src= "/images/brand.png"
-              alt="tron brand"
-              width={480}
-              height={480}
+              <Image
+                src="/images/brand.png"
+                alt="tron brand"
+                width={480}
+                height={480}
               />
             </div>
             <div className="col-lg-6">
