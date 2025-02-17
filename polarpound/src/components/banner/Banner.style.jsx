@@ -142,6 +142,10 @@ const BannerWrapper = styled.section`
     }
   }
 
+  .gittu-banner-list li {
+    justify-content:flex-start;
+  }
+
   .gittu-banner-right {
     width: 512px;
     max-width: 100%;

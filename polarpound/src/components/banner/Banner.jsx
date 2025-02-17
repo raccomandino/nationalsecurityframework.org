@@ -486,7 +486,7 @@ const Banner = () => {
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="gittu-banner-left">
-                <h6 className="mt-15" style={{ color: "rgb(00 00 00)" }}>
+              <h6 className="mt-15" style={{ color: "rgb(0, 0, 0)", paddingBottom: "20px" }}>
                   {" "}
                   {AboutData.titleExtra}
                 </h6>
@@ -561,7 +561,7 @@ const Banner = () => {
             </div>
             <div className="col-lg-6">
               <div className="gittu-banner-left">
-                <h6 className="mt-15" style={{ color: "rgb(00 00 00)" }}>
+                <h6 className="mt-15" style={{ color: "rgb(0, 0, 0)", paddingBottom: "20px" }}>
                   {" "}
                   {PowerData.titleExtra}
                 </h6>

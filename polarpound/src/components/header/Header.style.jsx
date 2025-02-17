@@ -69,14 +69,12 @@ const HeaderWrapper = styled.div`
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background: ${({ theme }) => theme.colors.black}26;
-      backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: 0.3s;
       img {
-        width: 20px;
+        width: 50px;
         transition: 0.3s;
       }
       &:hover {
