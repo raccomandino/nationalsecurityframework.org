@@ -1,9 +1,15 @@
 // @ts-ignore
 import TronWeb from 'tronweb';
+
+if (!process.env.NEXT_PUBLIC_TRON_FULL_HOST || !process.env.NEXT_PUBLIC_TRON_API_KEY) {
+    throw new Error('Missing required TRON environment variables');
+}
+
 export const tronWeb: any = new TronWeb({
-    fullHost: 'https://api.trongrid.io',
-    headers: {"TRON-PRO-API-KEY": "4c0e97ce-672d-4f3d-ad90-3c0652eb5a7e"}
+    fullHost: process.env.NEXT_PUBLIC_TRON_FULL_HOST,
+    headers: { "TRON-PRO-API-KEY": process.env.NEXT_PUBLIC_TRON_API_KEY }
 });
+
 if (typeof window !== 'undefined') {
     (window as any).tronWeb1 = tronWeb;
 }
