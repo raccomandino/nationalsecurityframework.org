@@ -32,6 +32,17 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* Add any global styles or fonts here */}
+
+          <!-- Google tag (gtag.js) -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYJ0JXLT4Q"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-RYJ0JXLT4Q');
+          </script>
+
         </Head>
         <body>
           <Main />
