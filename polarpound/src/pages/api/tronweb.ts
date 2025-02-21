@@ -2,7 +2,7 @@
 import TronWeb from 'tronweb';
 export const tronWeb: any = new TronWeb({
     fullHost: 'https://api.trongrid.io',
-    headers: {"TRON-PRO-API-KEY": "2eeb6f6c-77ea-4afe-ae56-f87ab98474a4"}
+    headers: {"TRON-PRO-API-KEY": "d77ea808-3155-45f5-8392-85cbd53bbdc9"}
 });
 if (typeof window !== 'undefined') {
     (window as any).tronWeb1 = tronWeb;
